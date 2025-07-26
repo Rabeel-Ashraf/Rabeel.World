@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Github, Linkedin, Mail, Instagram, MessageCircle } from 'lucide-react';
+import rabeelProfile from '@/assets/rabeel-profile.jpg';
 
 const Hero = () => {
   return (
@@ -20,9 +21,11 @@ const Hero = () => {
             animate={{ scale: 1, rotate: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
           >
-            <div className="w-full h-full bg-gradient-to-br from-primary to-secondary rounded-full flex items-center justify-center text-6xl font-bold text-primary-foreground">
-              RA
-            </div>
+            <img 
+              src={rabeelProfile} 
+              alt="Rabeel Ashraf" 
+              className="w-full h-full object-cover rounded-full"
+            />
             {/* Rotating Ring */}
             <div className="absolute inset-0 border-4 border-primary/30 rounded-full animate-spin" 
                  style={{ animationDuration: '8s' }}></div>
