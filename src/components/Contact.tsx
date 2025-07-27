@@ -54,7 +54,7 @@ const Contact = () => {
       icon: Mail,
       title: 'Email',
       description: 'Professional inquiries',
-      action: () => window.location.href = 'mailto:rabeel.ashraf@example.com',
+      action: () => window.location.href = 'mailto: mrperfect6ft@gmail.com',
       gradient: 'from-primary to-secondary'
     }
   ];
