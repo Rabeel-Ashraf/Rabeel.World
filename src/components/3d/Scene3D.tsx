@@ -59,13 +59,24 @@ const AIRobot = () => {
 const Earth = () => {
   return (
     <Float speed={1} rotationIntensity={0.5} floatIntensity={1}>
-      <mesh position={[-3, 0, 0]}>
+      <mesh position={[-3, 0, 0]} rotation={[0, 0, 0]}>
         <sphereGeometry args={[1.5, 64, 64]} />
         <meshStandardMaterial 
-          color="#1e40af"
-          emissive="#1e3a8a"
-          emissiveIntensity={0.2}
+          color="#00f5ff"
+          emissive="#004d66"
+          emissiveIntensity={0.6}
           wireframe={true}
+        />
+      </mesh>
+      {/* Inner glow sphere */}
+      <mesh position={[-3, 0, 0]}>
+        <sphereGeometry args={[1.3, 32, 32]} />
+        <meshStandardMaterial 
+          color="#00f5ff"
+          emissive="#00f5ff"
+          emissiveIntensity={0.3}
+          transparent={true}
+          opacity={0.2}
         />
       </mesh>
     </Float>
@@ -93,17 +104,21 @@ interface Scene3DProps {
 }
 
 const Scene3D = ({ children, className = "" }: Scene3DProps) => {
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+  
   return (
     <div className={`w-full h-full ${className}`}>
       <Canvas
-        camera={{ position: [0, 0, 10], fov: 75 }}
-        gl={{ alpha: true, antialias: true }}
+        camera={{ position: [0, 0, 8], fov: isMobile ? 90 : 75 }}
+        gl={{ alpha: true, antialias: !isMobile }}
+        dpr={Math.min(window.devicePixelRatio || 1, 2)}
       >
         <Suspense fallback={null}>
-          {/* Lighting */}
-          <ambientLight intensity={0.3} />
-          <pointLight position={[10, 10, 10]} intensity={1} color="#00f5ff" />
-          <pointLight position={[-10, -10, -10]} intensity={0.5} color="#8b5cf6" />
+          {/* Enhanced Lighting for better visibility */}
+          <ambientLight intensity={0.5} />
+          <pointLight position={[10, 10, 10]} intensity={1.5} color="#00f5ff" />
+          <pointLight position={[-10, -10, -10]} intensity={1} color="#8b5cf6" />
+          <pointLight position={[0, 10, 0]} intensity={0.8} color="#00ff88" />
           
           {/* 3D Elements */}
           <ParticleField />
@@ -114,9 +129,9 @@ const Scene3D = ({ children, className = "" }: Scene3DProps) => {
           <OrbitControls 
             enableZoom={false} 
             enablePan={false}
-            enableRotate={true}
+            enableRotate={!isMobile}
             autoRotate={true}
-            autoRotateSpeed={0.5}
+            autoRotateSpeed={isMobile ? 1 : 0.5}
           />
           
           {children}

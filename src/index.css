@@ -122,6 +122,25 @@ All colors MUST be HSL.
     background: var(--gradient-dark);
     font-family: 'Inter', sans-serif;
   }
+
+  /* Mobile optimizations */
+  @media (max-width: 768px) {
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
+    
+    .holo-card, .glass {
+      backdrop-filter: blur(8px) saturate(180%);
+    }
+    
+    .glow-primary, .glow-secondary, .glow-accent {
+      box-shadow: none;
+    }
+    
+    .pulse-glow {
+      animation: none;
+    }
+  }
 }
 
 @layer components {
@@ -205,5 +224,18 @@ All colors MUST be HSL.
   @keyframes codeRain {
     0% { transform: translateY(-100%); }
     100% { transform: translateY(100%); }
+  }
+
+  /* Responsive text scaling */
+  .text-responsive {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+  }
+
+  /* Mobile-friendly touch targets */
+  @media (max-width: 768px) {
+    button, a {
+      min-height: 44px;
+      min-width: 44px;
+    }
   }
 }

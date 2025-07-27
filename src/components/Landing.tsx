@@ -46,9 +46,9 @@ const Landing = ({ onEnter }: LandingProps) => {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 2 }}
             onClick={toggleMusic}
-            className="absolute top-8 right-8 p-3 rounded-full glass hover:glow-primary transition-all duration-300"
+            className="absolute top-4 right-4 md:top-8 md:right-8 p-2 md:p-3 rounded-full glass hover:glow-primary transition-all duration-300"
           >
-            {musicEnabled ? <Volume2 className="w-6 h-6" /> : <VolumeX className="w-6 h-6" />}
+            {musicEnabled ? <Volume2 className="w-5 h-5 md:w-6 md:h-6" /> : <VolumeX className="w-5 h-5 md:w-6 md:h-6" />}
           </motion.button>
           
           {/* Main Title */}
@@ -58,10 +58,10 @@ const Landing = ({ onEnter }: LandingProps) => {
             transition={{ duration: 1, delay: 0.5 }}
             className="space-y-6 mb-12"
           >
-            <h1 className="text-6xl md:text-8xl font-orbitron font-black text-neon">
+            <h1 className="text-4xl sm:text-6xl md:text-8xl font-orbitron font-black text-neon">
               RABEEL.WORLD
             </h1>
-            <p className="text-xl md:text-2xl font-inter text-muted-foreground max-w-2xl">
+            <p className="text-lg sm:text-xl md:text-2xl font-inter text-muted-foreground max-w-2xl px-4">
               Welcome to the digital universe of AI innovation, engineering excellence, 
               and futuristic vision
             </p>
@@ -72,7 +72,7 @@ const Landing = ({ onEnter }: LandingProps) => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1.5, duration: 1 }}
-            className="mb-12 space-y-2 font-mono text-sm text-accent"
+            className="mb-12 space-y-2 font-mono text-xs sm:text-sm text-accent px-4"
           >
             <motion.div
               initial={{ width: 0 }}
@@ -111,7 +111,7 @@ const Landing = ({ onEnter }: LandingProps) => {
               disabled={isEntering}
               size="lg"
               className={`
-                font-orbitron font-bold text-lg px-12 py-6 rounded-full
+                font-orbitron font-bold text-sm sm:text-lg px-8 sm:px-12 py-4 sm:py-6 rounded-full
                 bg-gradient-to-r from-primary via-secondary to-accent
                 hover:glow-primary transition-all duration-500
                 ${isEntering ? 'animate-pulse' : 'pulse-glow'}
@@ -128,7 +128,7 @@ const Landing = ({ onEnter }: LandingProps) => {
             transition={{ delay: 6, duration: 1 }}
             className="absolute bottom-8 left-1/2 transform -translate-x-1/2 text-center"
           >
-            <div className="flex items-center space-x-4 text-sm text-muted-foreground font-inter">
+            <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4 text-xs sm:text-sm text-muted-foreground font-inter">
               <div className="flex items-center space-x-2">
                 <div className="w-2 h-2 rounded-full bg-accent animate-pulse"></div>
                 <span>AI Systems Online</span>

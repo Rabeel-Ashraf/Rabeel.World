@@ -16,7 +16,7 @@ const Hero = () => {
         <div className="text-center space-y-8">
           {/* Profile Image with Glow */}
           <motion.div 
-            className="relative mx-auto w-48 h-48 rounded-full overflow-hidden glow-primary"
+            className="relative mx-auto w-36 h-36 sm:w-48 sm:h-48 rounded-full overflow-hidden glow-primary"
             initial={{ scale: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             transition={{ duration: 1, ease: "easeOut" }}
@@ -38,13 +38,13 @@ const Hero = () => {
             transition={{ duration: 0.8, delay: 0.3 }}
             className="space-y-4"
           >
-            <h1 className="text-5xl md:text-7xl font-orbitron font-bold text-neon">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl font-orbitron font-bold text-neon">
               Rabeel Ashraf
             </h1>
             
             {/* Animated Role Titles */}
             <motion.div 
-              className="text-xl md:text-2xl font-inter text-muted-foreground"
+              className="text-lg sm:text-xl md:text-2xl font-inter text-muted-foreground"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 1, delay: 0.6 }}
@@ -81,7 +81,7 @@ const Hero = () => {
             <Button 
               size="lg"
               className="font-orbitron font-bold bg-gradient-to-r from-primary to-secondary hover:glow-primary transition-all duration-300 group"
-              onClick={() => window.open('https://wa.me/+971501234567?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you%20for%20a%20project', '_blank')}
+              onClick={() => window.open('https://wa.me/971501359046?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you%20for%20a%20project', '_blank')}
             >
               <MessageCircle className="mr-2 group-hover:animate-bounce" />
               Hire Me
