@@ -91,6 +91,12 @@ const Hero = () => {
               variant="outline" 
               size="lg"
               className="font-orbitron border-primary/50 hover:bg-primary/10 hover:glow-primary transition-all duration-300"
+              onClick={() => {
+                const projectsSection = document.getElementById('projects');
+                if (projectsSection) {
+                  projectsSection.scrollIntoView({ behavior: 'smooth' });
+                }
+              }}
             >
               View Portfolio
             </Button>

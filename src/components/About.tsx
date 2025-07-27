@@ -43,9 +43,9 @@ const About = () => {
             About Me
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            Rabeel Ashraf — AI Specialist, Mechanical Engineer, Safety Officer & Founder of Orionix Labs. 
-            Passionate about building AI tools and futuristic platforms that solve real-world problems 
-            in the UAE and beyond.
+            I'm Rabeel Ashraf — AI Specialist, Mechanical Engineer, Safety Officer & Founder of Orionix Labs. 
+            I build AI-powered apps that fuse futuristic design with real-world utility, helping startups and 
+            people thrive in the UAE and beyond.
           </p>
         </motion.div>
 
