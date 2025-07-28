@@ -1,4 +1,3 @@
-
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -55,7 +54,7 @@ const Contact = () => {
       icon: Mail,
       title: 'Email',
       description: 'Professional inquiries',
-      action: () => window.location.href = 'mailto:mrperfect6ft@gmail.com',
+      action: () => window.location.href = 'mailto: mrperfect6ft@gmail.com',
       gradient: 'from-primary to-secondary'
     }
   ];
@@ -206,7 +205,7 @@ const Contact = () => {
                 
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-primary" />
-                  <span className="text-muted-foreground">mrperfect6ft@gmail.com</span>
+                  <span className="text-muted-foreground">rabeel.ashraf@example.com</span>
                 </div>
               </div>
             </motion.div>
