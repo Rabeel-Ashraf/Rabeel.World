@@ -57,26 +57,33 @@ const AIRobot = () => {
 
 // Rotating Earth Component
 const Earth = () => {
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+  
+  // Mobile-optimized positioning and sizing
+  const position: [number, number, number] = isMobile ? [0, 0, 0] : [-3, 0, 0];
+  const sphereSize = isMobile ? 2.2 : 1.5;
+  const innerGlowSize = isMobile ? 2.0 : 1.3;
+  
   return (
-    <Float speed={1} rotationIntensity={0.5} floatIntensity={1}>
-      <mesh position={[-3, 0, 0]} rotation={[0, 0, 0]}>
-        <sphereGeometry args={[1.5, 64, 64]} />
+    <Float speed={1} rotationIntensity={0.5} floatIntensity={isMobile ? 0.5 : 1}>
+      <mesh position={position} rotation={[0, 0, 0]}>
+        <sphereGeometry args={[sphereSize, isMobile ? 32 : 64, isMobile ? 32 : 64]} />
         <meshStandardMaterial 
           color="#00f5ff"
           emissive="#004d66"
-          emissiveIntensity={0.6}
+          emissiveIntensity={isMobile ? 0.8 : 0.6}
           wireframe={true}
         />
       </mesh>
       {/* Inner glow sphere */}
-      <mesh position={[-3, 0, 0]}>
-        <sphereGeometry args={[1.3, 32, 32]} />
+      <mesh position={position}>
+        <sphereGeometry args={[innerGlowSize, 32, 32]} />
         <meshStandardMaterial 
           color="#00f5ff"
           emissive="#00f5ff"
-          emissiveIntensity={0.3}
+          emissiveIntensity={isMobile ? 0.4 : 0.3}
           transparent={true}
-          opacity={0.2}
+          opacity={isMobile ? 0.3 : 0.2}
         />
       </mesh>
     </Float>
