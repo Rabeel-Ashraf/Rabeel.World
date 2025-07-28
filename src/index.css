@@ -237,51 +237,5 @@ All colors MUST be HSL.
       min-height: 44px;
       min-width: 44px;
     }
-    
-    /* Improved mobile spacing */
-    .container {
-      padding-left: 1rem;
-      padding-right: 1rem;
-    }
-    
-    /* Better mobile button scaling */
-    .mobile-button {
-      padding: 0.75rem 1.5rem;
-      font-size: 0.875rem;
-    }
-    
-    /* Mobile text sizing */
-    .mobile-text-scale {
-      font-size: clamp(0.875rem, 2.5vw, 1.125rem);
-    }
-    
-    /* Mobile hero scaling */
-    .mobile-hero-title {
-      font-size: clamp(2.5rem, 8vw, 4rem);
-      line-height: 1.1;
-    }
-    
-    /* Mobile section padding */
-    .mobile-section {
-      padding-top: 3rem;
-      padding-bottom: 3rem;
-    }
-  }
-
-  /* Enhanced glow effects for desktop only */
-  @media (min-width: 769px) {
-    .enhanced-glow:hover {
-      box-shadow: 
-        0 0 20px hsl(var(--primary) / 0.4),
-        0 0 40px hsl(var(--primary) / 0.2),
-        0 0 60px hsl(var(--primary) / 0.1);
-    }
-    
-    .card-glow:hover {
-      box-shadow: 
-        0 10px 30px hsl(var(--primary) / 0.3),
-        0 0 40px hsl(var(--primary) / 0.1);
-      transform: translateY(-5px);
-    }
   }
 }

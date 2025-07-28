@@ -28,7 +28,7 @@ const Navbar = () => {
       animate={{ y: 0, opacity: 1 }}
       transition={{ duration: 0.8, delay: 0.5 }}
       className={`
-        fixed top-0 left-0 right-0 z-50 transition-all duration-300
+        fixed top-0 left-0 right-0 z-40 transition-all duration-300
         ${isScrolled ? 'glass backdrop-blur-md' : 'bg-transparent'}
       `}
     >
@@ -80,55 +80,37 @@ const Navbar = () => {
         </div>
 
         {/* Mobile Navigation */}
-        <motion.div
-          initial={false}
-          animate={isMobileMenuOpen ? { opacity: 1, height: 'auto' } : { opacity: 0, height: 0 }}
-          transition={{ duration: 0.3, ease: 'easeInOut' }}
-          className={`md:hidden overflow-hidden ${isMobileMenuOpen ? 'mt-4 pt-4 border-t border-border' : ''}`}
-        >
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -10 }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: -10 }}
-              transition={{ duration: 0.2 }}
-            >
-              <div className="flex flex-col space-y-4">
-                {navItems.map((item) => (
-                  <a
-                    key={item.label}
-                    href={item.href}
-                    className="font-inter text-muted-foreground hover:text-primary transition-colors py-2"
-                    onClick={() => setIsMobileMenuOpen(false)}
-                  >
-                    {item.label}
-                  </a>
-                ))}
-                
-                <Button 
-                  size="sm"
-                  className="font-orbitron bg-gradient-to-r from-primary to-secondary hover:glow-primary w-full"
-                  onClick={() => {
-                    window.open('https://wa.me/+971501234567?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you', '_blank');
-                    setIsMobileMenuOpen(false);
-                  }}
-                >
-                  Hire Me
-                </Button>
-              </div>
-            </motion.div>
-          )}
-        </motion.div>
-        
-        {/* Mobile Menu Backdrop */}
         {isMobileMenuOpen && (
           <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={() => setIsMobileMenuOpen(false)}
-            className="fixed inset-0 bg-background/80 backdrop-blur-sm z-30 md:hidden"
-          />
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden mt-4 pt-4 border-t border-border"
+          >
+            <div className="flex flex-col space-y-4">
+              {navItems.map((item) => (
+                <a
+                  key={item.label}
+                  href={item.href}
+                  className="font-inter text-muted-foreground hover:text-primary transition-colors py-2"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {item.label}
+                </a>
+              ))}
+              
+              <Button 
+                size="sm"
+                className="font-orbitron bg-gradient-to-r from-primary to-secondary hover:glow-primary w-full"
+                onClick={() => {
+                  window.open('https://wa.me/+971501234567?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you', '_blank');
+                  setIsMobileMenuOpen(false);
+                }}
+              >
+                Hire Me
+              </Button>
+            </div>
+          </motion.div>
         )}
       </div>
     </motion.nav>

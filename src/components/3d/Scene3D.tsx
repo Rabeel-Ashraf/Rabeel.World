@@ -57,33 +57,26 @@ const AIRobot = () => {
 
 // Rotating Earth Component
 const Earth = () => {
-  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
-  
-  // Mobile-optimized positioning and sizing
-  const position: [number, number, number] = isMobile ? [0, 0, 0] : [-3, 0, 0];
-  const sphereSize = isMobile ? 2.2 : 1.5;
-  const innerGlowSize = isMobile ? 2.0 : 1.3;
-  
   return (
-    <Float speed={1} rotationIntensity={0.5} floatIntensity={isMobile ? 0.5 : 1}>
-      <mesh position={position} rotation={[0, 0, 0]}>
-        <sphereGeometry args={[sphereSize, isMobile ? 32 : 64, isMobile ? 32 : 64]} />
+    <Float speed={1} rotationIntensity={0.5} floatIntensity={1}>
+      <mesh position={[-3, 0, 0]} rotation={[0, 0, 0]}>
+        <sphereGeometry args={[1.5, 64, 64]} />
         <meshStandardMaterial 
           color="#00f5ff"
           emissive="#004d66"
-          emissiveIntensity={isMobile ? 0.8 : 0.6}
+          emissiveIntensity={0.6}
           wireframe={true}
         />
       </mesh>
       {/* Inner glow sphere */}
-      <mesh position={position}>
-        <sphereGeometry args={[innerGlowSize, 32, 32]} />
+      <mesh position={[-3, 0, 0]}>
+        <sphereGeometry args={[1.3, 32, 32]} />
         <meshStandardMaterial 
           color="#00f5ff"
           emissive="#00f5ff"
-          emissiveIntensity={isMobile ? 0.4 : 0.3}
+          emissiveIntensity={0.3}
           transparent={true}
-          opacity={isMobile ? 0.3 : 0.2}
+          opacity={0.2}
         />
       </mesh>
     </Float>
@@ -92,17 +85,15 @@ const Earth = () => {
 
 // Particle System
 const ParticleField = () => {
-  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
-  
   return (
     <Stars 
       radius={100} 
       depth={50} 
-      count={isMobile ? 1000 : 5000} 
-      factor={isMobile ? 2 : 4} 
+      count={5000} 
+      factor={4} 
       saturation={0} 
       fade 
-      speed={0.5}
+      speed={1}
     />
   );
 };
@@ -118,16 +109,9 @@ const Scene3D = ({ children, className = "" }: Scene3DProps) => {
   return (
     <div className={`w-full h-full ${className}`}>
       <Canvas
-        camera={{ position: [0, 0, isMobile ? 12 : 8], fov: isMobile ? 85 : 75 }}
-        gl={{ 
-          alpha: true, 
-          antialias: !isMobile,
-          powerPreference: "low-power",
-          stencil: false,
-          depth: true
-        }}
-        dpr={isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2)}
-        performance={{ min: 0.5 }}
+        camera={{ position: [0, 0, 8], fov: isMobile ? 90 : 75 }}
+        gl={{ alpha: true, antialias: !isMobile }}
+        dpr={Math.min(window.devicePixelRatio || 1, 2)}
       >
         <Suspense fallback={null}>
           {/* Enhanced Lighting for better visibility */}
@@ -136,10 +120,10 @@ const Scene3D = ({ children, className = "" }: Scene3DProps) => {
           <pointLight position={[-10, -10, -10]} intensity={1} color="#8b5cf6" />
           <pointLight position={[0, 10, 0]} intensity={0.8} color="#00ff88" />
           
-          {/* 3D Elements - Simplified for mobile */}
-          {!isMobile && <ParticleField />}
+          {/* 3D Elements */}
+          <ParticleField />
           <Earth />
-          {!isMobile && <AIRobot />}
+          <AIRobot />
           
           {/* Controls */}
           <OrbitControls 
