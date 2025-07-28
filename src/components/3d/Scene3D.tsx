@@ -85,15 +85,17 @@ const Earth = () => {
 
 // Particle System
 const ParticleField = () => {
+  const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
+  
   return (
     <Stars 
       radius={100} 
       depth={50} 
-      count={5000} 
-      factor={4} 
+      count={isMobile ? 1000 : 5000} 
+      factor={isMobile ? 2 : 4} 
       saturation={0} 
       fade 
-      speed={1}
+      speed={0.5}
     />
   );
 };
@@ -109,9 +111,16 @@ const Scene3D = ({ children, className = "" }: Scene3DProps) => {
   return (
     <div className={`w-full h-full ${className}`}>
       <Canvas
-        camera={{ position: [0, 0, 8], fov: isMobile ? 90 : 75 }}
-        gl={{ alpha: true, antialias: !isMobile }}
-        dpr={Math.min(window.devicePixelRatio || 1, 2)}
+        camera={{ position: [0, 0, isMobile ? 12 : 8], fov: isMobile ? 85 : 75 }}
+        gl={{ 
+          alpha: true, 
+          antialias: !isMobile,
+          powerPreference: "low-power",
+          stencil: false,
+          depth: true
+        }}
+        dpr={isMobile ? 1 : Math.min(window.devicePixelRatio || 1, 2)}
+        performance={{ min: 0.5 }}
       >
         <Suspense fallback={null}>
           {/* Enhanced Lighting for better visibility */}
@@ -120,10 +129,10 @@ const Scene3D = ({ children, className = "" }: Scene3DProps) => {
           <pointLight position={[-10, -10, -10]} intensity={1} color="#8b5cf6" />
           <pointLight position={[0, 10, 0]} intensity={0.8} color="#00ff88" />
           
-          {/* 3D Elements */}
-          <ParticleField />
+          {/* 3D Elements - Simplified for mobile */}
+          {!isMobile && <ParticleField />}
           <Earth />
-          <AIRobot />
+          {!isMobile && <AIRobot />}
           
           {/* Controls */}
           <OrbitControls 

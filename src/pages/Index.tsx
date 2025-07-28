@@ -6,6 +6,8 @@ import About from '@/components/About';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
+import FloatingWhatsApp from '@/components/FloatingWhatsApp';
+import { Toaster } from '@/components/ui/toaster';
 
 const Index = () => {
   const [showLanding, setShowLanding] = useState(true);
@@ -22,6 +24,8 @@ const Index = () => {
       <Projects />
       <Skills />
       <Contact />
+      <FloatingWhatsApp />
+      <Toaster />
     </div>
   );
 };

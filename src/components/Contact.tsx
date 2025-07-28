@@ -5,6 +5,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { MessageCircle, Instagram, Mail, Send, MapPin, Phone } from 'lucide-react';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { useForm, ValidationError } from '@formspree/react';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -14,18 +15,21 @@ const Contact = () => {
   });
   
   const { toast } = useToast();
+  const [state, handleSubmit] = useForm("xpwzqbzl"); // Replace with your Formspree form ID
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    await handleSubmit(e);
     
-    // Here you would typically send the form data to your backend
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    });
-    
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
+    if (state.succeeded) {
+      toast({
+        title: "✅ Message Sent Successfully!",
+        description: "Thanks for reaching out. I'll get back to you soon!",
+      });
+      
+      // Reset form
+      setFormData({ name: '', email: '', message: '' });
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -54,7 +58,7 @@ const Contact = () => {
       icon: Mail,
       title: 'Email',
       description: 'Professional inquiries',
-      action: () => window.location.href = 'mailto: mrperfect6ft@gmail.com',
+      action: () => window.location.href = 'mailto:mrperfect6ft@gmail.com',
       gradient: 'from-primary to-secondary'
     }
   ];
@@ -91,7 +95,7 @@ const Contact = () => {
                 Send a Message
               </h3>
               
-              <form onSubmit={handleSubmit} className="space-y-6">
+              <form onSubmit={handleFormSubmit} className="space-y-6">
                 <div>
                   <Input
                     name="name"
@@ -130,11 +134,18 @@ const Contact = () => {
                 <Button
                   type="submit"
                   size="lg"
-                  className="w-full font-orbitron font-bold bg-gradient-to-r from-primary to-secondary hover:glow-primary transition-all duration-300 group"
+                  disabled={state.submitting}
+                  className="w-full font-orbitron font-bold bg-gradient-to-r from-primary to-secondary hover:glow-primary transition-all duration-300 group disabled:opacity-50"
                 >
                   <Send className="mr-2 group-hover:animate-pulse" />
-                  Send Message
+                  {state.submitting ? 'Sending...' : 'Send Message'}
                 </Button>
+                <ValidationError 
+                  prefix="Message" 
+                  field="message"
+                  errors={state.errors}
+                  className="text-destructive text-sm"
+                />
               </form>
             </div>
           </motion.div>
@@ -205,7 +216,7 @@ const Contact = () => {
                 
                 <div className="flex items-center space-x-3">
                   <Mail className="w-5 h-5 text-primary" />
-                  <span className="text-muted-foreground">rabeel.ashraf@example.com</span>
+                  <span className="text-muted-foreground">mrperfect6ft@gmail.com</span>
                 </div>
               </div>
             </motion.div>
