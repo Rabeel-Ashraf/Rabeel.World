@@ -81,7 +81,11 @@ const Hero = () => {
             <Button 
               size="lg"
               className="font-orbitron font-bold bg-gradient-to-r from-primary to-secondary hover:glow-primary transition-all duration-300 group"
-              onClick={() => window.open('https://wa.me/971501359046?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you%20for%20a%20project', '_blank')}
+              onClick={() => {
+                const url = 'https://wa.me/971501359046?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you%20for%20a%20project';
+                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                if (newWindow) newWindow.opener = null;
+              }}
             >
               <MessageCircle className="mr-2 group-hover:animate-bounce" />
               Hire Me

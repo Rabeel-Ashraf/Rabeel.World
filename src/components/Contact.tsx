@@ -2,37 +2,110 @@ import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
-import { MessageCircle, Instagram, Mail, Send, MapPin, Phone } from 'lucide-react';
+import { MessageCircle, Instagram, Mail, Send, MapPin, Phone, Shield } from 'lucide-react';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { contactFormSchema, type ContactFormData } from '@/lib/validation';
+import { sanitizeInput, obfuscateEmail, openSecureLink, rateLimit } from '@/lib/security';
+import { z } from 'zod';
 
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    message: ''
+    message: '',
+    website: '' // Honeypot field
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Partial<ContactFormData>>({});
   
   const { toast } = useToast();
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    setErrors({});
     
-    // Here you would typically send the form data to your backend
-    toast({
-      title: "Message Sent!",
-      description: "Thanks for reaching out. I'll get back to you soon!",
-    });
+    // Rate limiting check
+    if (!rateLimit.checkLimit('contact-form', 3, 60000)) { // 3 attempts per minute
+      toast({
+        title: "Too Many Attempts",
+        description: "Please wait a moment before submitting again.",
+        variant: "destructive"
+      });
+      return;
+    }
     
-    // Reset form
-    setFormData({ name: '', email: '', message: '' });
+    // Honeypot check
+    if (formData.website) {
+      console.warn('Spam attempt detected');
+      return;
+    }
+    
+    setIsSubmitting(true);
+    
+    try {
+      // Sanitize inputs
+      const sanitizedData = {
+        name: sanitizeInput(formData.name),
+        email: sanitizeInput(formData.email),
+        message: sanitizeInput(formData.message)
+      };
+      
+      // Validate with Zod
+      const validatedData = contactFormSchema.parse(sanitizedData);
+      
+      // Simulate form submission (replace with actual API call)
+      await new Promise(resolve => setTimeout(resolve, 1000));
+      
+      toast({
+        title: "Message Sent!",
+        description: "Thanks for reaching out. I'll get back to you soon!",
+      });
+      
+      // Reset form
+      setFormData({ name: '', email: '', message: '', website: '' });
+      
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        const fieldErrors: Partial<ContactFormData> = {};
+        error.issues.forEach((issue) => {
+          if (issue.path[0]) {
+            fieldErrors[issue.path[0] as keyof ContactFormData] = issue.message;
+          }
+        });
+        setErrors(fieldErrors);
+        
+        toast({
+          title: "Validation Error",
+          description: "Please check your inputs and try again.",
+          variant: "destructive"
+        });
+      } else {
+        toast({
+          title: "Error",
+          description: "Something went wrong. Please try again later.",
+          variant: "destructive"
+        });
+      }
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value
-    });
+    const { name, value } = e.target;
+    setFormData(prev => ({
+      ...prev,
+      [name]: value
+    }));
+    
+    // Clear error when user starts typing
+    if (errors[name as keyof ContactFormData]) {
+      setErrors(prev => ({
+        ...prev,
+        [name]: undefined
+      }));
+    }
   };
 
   const contactMethods = [
@@ -40,14 +113,14 @@ const Contact = () => {
       icon: MessageCircle,
       title: 'WhatsApp',
       description: 'Let\'s chat directly',
-      action: () => window.open('https://wa.me/971501359046?text=Hi%20Rabeel,%20I%20would%20like%20to%20discuss%20a%20project%20with%20you', '_blank'),
+      action: () => openSecureLink('https://wa.me/971501359046?text=Hi%20Rabeel,%20I%20would%20like%20to%20discuss%20a%20project%20with%20you'),
       gradient: 'from-green-500 to-green-600'
     },
     {
       icon: Instagram,
       title: 'Instagram',
       description: 'Follow my journey',
-      action: () => window.open('https://instagram.com/xavernox?igsh=bDZ2bjF3aWM3b3k1', '_blank'),
+      action: () => openSecureLink('https://instagram.com/xavernox?igsh=bDZ2bjF3aWM3b3k1'),
       gradient: 'from-pink-500 to-purple-600'
     },
     {
@@ -92,49 +165,84 @@ const Contact = () => {
               </h3>
               
               <form onSubmit={handleSubmit} className="space-y-6">
-                <div>
-                  <Input
-                    name="name"
-                    placeholder="Your Name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    className="bg-input border-border focus:border-primary focus:glow-primary transition-all duration-300"
-                    required
-                  />
-                </div>
+                 <div>
+                   <Input
+                     name="name"
+                     placeholder="Your Name"
+                     value={formData.name}
+                     onChange={handleInputChange}
+                     className={`bg-input border-border focus:border-primary focus:glow-primary transition-all duration-300 ${
+                       errors.name ? 'border-destructive' : ''
+                     }`}
+                     required
+                     maxLength={50}
+                   />
+                   {errors.name && (
+                     <p className="text-sm text-destructive mt-1">{errors.name}</p>
+                   )}
+                 </div>
+                 
+                 <div>
+                   <Input
+                     name="email"
+                     type="email"
+                     placeholder="your.email@example.com"
+                     value={formData.email}
+                     onChange={handleInputChange}
+                     className={`bg-input border-border focus:border-primary focus:glow-primary transition-all duration-300 ${
+                       errors.email ? 'border-destructive' : ''
+                     }`}
+                     required
+                     maxLength={100}
+                   />
+                   {errors.email && (
+                     <p className="text-sm text-destructive mt-1">{errors.email}</p>
+                   )}
+                 </div>
+                 
+                 <div>
+                   <Textarea
+                     name="message"
+                     placeholder="Tell me about your project or idea..."
+                     value={formData.message}
+                     onChange={handleInputChange}
+                     rows={6}
+                     className={`bg-input border-border focus:border-primary focus:glow-primary transition-all duration-300 resize-none ${
+                       errors.message ? 'border-destructive' : ''
+                     }`}
+                     required
+                     maxLength={1000}
+                   />
+                   {errors.message && (
+                     <p className="text-sm text-destructive mt-1">{errors.message}</p>
+                   )}
+                 </div>
+                 
+                 {/* Honeypot field - hidden from users */}
+                 <div className="sr-only">
+                   <Input
+                     name="website"
+                     value={formData.website}
+                     onChange={handleInputChange}
+                     tabIndex={-1}
+                     autoComplete="off"
+                   />
+                 </div>
                 
-                <div>
-                  <Input
-                    name="email"
-                    type="email"
-                    placeholder="your.email@example.com"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    className="bg-input border-border focus:border-primary focus:glow-primary transition-all duration-300"
-                    required
-                  />
-                </div>
-                
-                <div>
-                  <Textarea
-                    name="message"
-                    placeholder="Tell me about your project or idea..."
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={6}
-                    className="bg-input border-border focus:border-primary focus:glow-primary transition-all duration-300 resize-none"
-                    required
-                  />
-                </div>
-                
-                <Button
-                  type="submit"
-                  size="lg"
-                  className="w-full font-orbitron font-bold bg-gradient-to-r from-primary to-secondary hover:glow-primary transition-all duration-300 group"
-                >
-                  <Send className="mr-2 group-hover:animate-pulse" />
-                  Send Message
-                </Button>
+                 <Button
+                   type="submit"
+                   size="lg"
+                   disabled={isSubmitting}
+                   className="w-full font-orbitron font-bold bg-gradient-to-r from-primary to-secondary hover:glow-primary transition-all duration-300 group disabled:opacity-50"
+                 >
+                   <Send className={`mr-2 ${isSubmitting ? 'animate-spin' : 'group-hover:animate-pulse'}`} />
+                   {isSubmitting ? 'Sending...' : 'Send Message'}
+                 </Button>
+                 
+                 <div className="flex items-center justify-center text-xs text-muted-foreground mt-2">
+                   <Shield className="w-3 h-3 mr-1" />
+                   Secured with input validation and rate limiting
+                 </div>
               </form>
             </div>
           </motion.div>
@@ -203,10 +311,10 @@ const Contact = () => {
                   <span className="text-muted-foreground">+971 50 135 9046</span>
                 </div>
                 
-                <div className="flex items-center space-x-3">
-                  <Mail className="w-5 h-5 text-primary" />
-                  <span className="text-muted-foreground">rabeel.ashraf@example.com</span>
-                </div>
+                 <div className="flex items-center space-x-3">
+                   <Mail className="w-5 h-5 text-primary" />
+                   <span className="text-muted-foreground">{obfuscateEmail('rabeel.ashraf@example.com')}</span>
+                 </div>
               </div>
             </motion.div>
 

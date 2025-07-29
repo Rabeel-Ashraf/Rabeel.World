@@ -105,7 +105,10 @@ const Projects = () => {
                     variant="outline"
                     size="sm"
                     className="flex-1 border-primary/50 hover:bg-primary/10 hover:glow-primary transition-all duration-300"
-                    onClick={() => window.open(project.demo, '_blank')}
+                    onClick={() => {
+                      const newWindow = window.open(project.demo, '_blank', 'noopener,noreferrer');
+                      if (newWindow) newWindow.opener = null;
+                    }}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
                     Demo
@@ -115,7 +118,10 @@ const Projects = () => {
                     variant="outline"
                     size="sm"
                     className="flex-1 border-secondary/50 hover:bg-secondary/10 hover:glow-secondary transition-all duration-300"
-                    onClick={() => window.open(project.repo, '_blank')}
+                    onClick={() => {
+                      const newWindow = window.open(project.repo, '_blank', 'noopener,noreferrer');
+                      if (newWindow) newWindow.opener = null;
+                    }}
                   >
                     <Github className="w-4 h-4 mr-2" />
                     Code
@@ -140,7 +146,10 @@ const Projects = () => {
           <Button
             size="lg"
             className="font-orbitron font-bold bg-gradient-to-r from-primary to-secondary hover:glow-primary transition-all duration-300"
-            onClick={() => window.open('https://github.com/Rabeel-Ashraf', '_blank')}
+            onClick={() => {
+              const newWindow = window.open('https://github.com/Rabeel-Ashraf', '_blank', 'noopener,noreferrer');
+              if (newWindow) newWindow.opener = null;
+            }}
           >
             <Github className="mr-2" />
             View All Projects

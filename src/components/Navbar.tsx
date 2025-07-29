@@ -62,7 +62,11 @@ const Navbar = () => {
             <Button 
               size="sm"
               className="font-orbitron bg-gradient-to-r from-primary to-secondary hover:glow-primary"
-              onClick={() => window.open('https://wa.me/+971501234567?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you', '_blank')}
+              onClick={() => {
+                const url = 'https://wa.me/+971501234567?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you';
+                const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                if (newWindow) newWindow.opener = null;
+              }}
             >
               Hire Me
             </Button>
@@ -103,7 +107,9 @@ const Navbar = () => {
                 size="sm"
                 className="font-orbitron bg-gradient-to-r from-primary to-secondary hover:glow-primary w-full"
                 onClick={() => {
-                  window.open('https://wa.me/+971501234567?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you', '_blank');
+                  const url = 'https://wa.me/+971501234567?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you';
+                  const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
+                  if (newWindow) newWindow.opener = null;
                   setIsMobileMenuOpen(false);
                 }}
               >
