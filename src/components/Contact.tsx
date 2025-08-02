@@ -313,7 +313,7 @@ const Contact = () => {
                 
                  <div className="flex items-center space-x-3">
                    <Mail className="w-5 h-5 text-primary" />
-                   <span className="text-muted-foreground">{obfuscateEmail('mrperfect6ft@gmail.com')}</span>
+                   <span className="text-muted-foreground">mrperfect6ft@gmail.com</span>
                  </div>
               </div>
             </motion.div>
