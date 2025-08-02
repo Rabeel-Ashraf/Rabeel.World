@@ -127,7 +127,7 @@ const Contact = () => {
       icon: Mail,
       title: 'Email',
       description: 'Professional inquiries',
-      action: () => window.location.href = 'mailto: mrperfect6ft@gmail.com',
+      action: () => window.location.href = 'mailto:mrperfect6ft@gmail.com',
       gradient: 'from-primary to-secondary'
     }
   ];
@@ -313,7 +313,7 @@ const Contact = () => {
                 
                  <div className="flex items-center space-x-3">
                    <Mail className="w-5 h-5 text-primary" />
-                   <span className="text-muted-foreground">{obfuscateEmail('rabeel.ashraf@example.com')}</span>
+                   <span className="text-muted-foreground">{obfuscateEmail('mrperfect6ft@gmail.com')}</span>
                  </div>
               </div>
             </motion.div>
