@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import Landing from '@/components/Landing';
 import Navbar from '@/components/Navbar';
-import OptimizedHero from '@/components/OptimizedHero';
+import Hero from '@/components/Hero';
 import About from '@/components/About';
 import Projects from '@/components/Projects';
 import Skills from '@/components/Skills';
@@ -17,7 +17,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <OptimizedHero />
+      <Hero />
       <About />
       <Projects />
       <Skills />
