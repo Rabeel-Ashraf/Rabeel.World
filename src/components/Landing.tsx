@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Volume2, VolumeX } from 'lucide-react';
-import Scene3D from './3d/Scene3D';
+import LazyScene3D from './LazyScene3D';
 
 interface LandingProps {
   onEnter: () => void;
@@ -34,7 +34,7 @@ const Landing = ({ onEnter }: LandingProps) => {
       >
         {/* 3D Background Scene */}
         <div className="absolute inset-0">
-          <Scene3D />
+          <LazyScene3D className="absolute inset-0 opacity-30" />
         </div>
         
         {/* Overlay Content */}
