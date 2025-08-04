@@ -83,13 +83,13 @@ const Earth = () => {
   );
 };
 
-// Particle System with mobile optimization
-const ParticleField = ({ count = 5000 }: { count?: number }) => {
+// Particle System
+const ParticleField = () => {
   return (
     <Stars 
       radius={100} 
       depth={50} 
-      count={count} 
+      count={5000} 
       factor={4} 
       saturation={0} 
       fade 
@@ -106,22 +106,12 @@ interface Scene3DProps {
 const Scene3D = ({ children, className = "" }: Scene3DProps) => {
   const isMobile = typeof window !== 'undefined' ? window.innerWidth < 768 : false;
   
-  // Performance optimizations for mobile
-  const particleCount = isMobile ? 1000 : 5000;
-  const enableAntialiasing = !isMobile;
-  const maxPixelRatio = isMobile ? 1 : 2;
-  
   return (
     <div className={`w-full h-full ${className}`}>
       <Canvas
         camera={{ position: [0, 0, 8], fov: isMobile ? 90 : 75 }}
-        gl={{ 
-          alpha: true, 
-          antialias: enableAntialiasing,
-          powerPreference: isMobile ? 'low-power' : 'high-performance'
-        }}
-        dpr={Math.min(window.devicePixelRatio || 1, maxPixelRatio)}
-        performance={{ min: 0.5 }}
+        gl={{ alpha: true, antialias: !isMobile }}
+        dpr={Math.min(window.devicePixelRatio || 1, 2)}
       >
         <Suspense fallback={null}>
           {/* Enhanced Lighting for better visibility */}
@@ -131,9 +121,9 @@ const Scene3D = ({ children, className = "" }: Scene3DProps) => {
           <pointLight position={[0, 10, 0]} intensity={0.8} color="#00ff88" />
           
           {/* 3D Elements */}
-          <ParticleField count={particleCount} />
+          <ParticleField />
           <Earth />
-          {!isMobile && <AIRobot />}
+          <AIRobot />
           
           {/* Controls */}
           <OrbitControls 
