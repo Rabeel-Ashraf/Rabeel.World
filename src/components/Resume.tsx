@@ -28,13 +28,20 @@ const Resume = () => {
           className="holo-card p-4 md:p-6"
         >
           <div className="relative w-full overflow-hidden rounded-lg border border-border bg-background/50">
-            {/* Embedded PDF viewer */}
-            <iframe
-              title="Resume PDF"
-              src="/resume.pdf"
-              loading="lazy"
+            {/* Embedded PDF viewer with image fallback for unsupported browsers */}
+            <object
+              data="/resume.pdf"
+              type="application/pdf"
+              aria-label="Embedded resume PDF"
               className="w-full h-72 sm:h-96 md:h-[32rem]"
-            />
+            >
+              <img
+                src="/resume-showcase.jpg"
+                alt="Rabeel Ashraf resume preview image"
+                loading="lazy"
+                className="block w-full h-72 sm:h-96 md:h-[32rem] object-cover"
+              />
+            </object>
           </div>
 
           <div className="mt-6 flex justify-center">
