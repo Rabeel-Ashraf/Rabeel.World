@@ -36,7 +36,7 @@ const Resume = () => {
               className="w-full h-72 sm:h-96 md:h-[32rem]"
             >
               <img
-                src="/resume-showcase.jpg"
+                src="/resume-preview.jpg"
                 alt="Rabeel Ashraf resume preview image"
                 loading="lazy"
                 className="block w-full h-72 sm:h-96 md:h-[32rem] object-cover"
