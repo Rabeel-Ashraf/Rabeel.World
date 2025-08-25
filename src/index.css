@@ -231,6 +231,156 @@ All colors MUST be HSL.
     font-size: clamp(1rem, 2.5vw, 1.25rem);
   }
 
+  /* Background Animation Styles */
+  .bg-gradient-animation {
+    background: linear-gradient(
+      45deg,
+      hsl(var(--background)) 0%,
+      hsl(var(--primary) / 0.03) 25%,
+      hsl(var(--secondary) / 0.02) 50%,
+      hsl(var(--accent) / 0.03) 75%,
+      hsl(var(--background)) 100%
+    );
+    background-size: 400% 400%;
+    animation: gradient-flow 20s ease-in-out infinite;
+  }
+
+  .floating-orb {
+    position: absolute;
+    border-radius: 50%;
+    background: radial-gradient(
+      circle at center,
+      hsl(var(--primary) / 0.1) 0%,
+      hsl(var(--primary) / 0.05) 50%,
+      transparent 70%
+    );
+    filter: blur(1px);
+    animation: float-orb 25s ease-in-out infinite;
+    will-change: transform;
+  }
+
+  .floating-orb-1 {
+    width: min(40vw, 600px);
+    height: min(40vw, 600px);
+    top: -20%;
+    left: -10%;
+    animation-delay: 0s;
+    animation-duration: 25s;
+  }
+
+  .floating-orb-2 {
+    width: min(35vw, 500px);
+    height: min(35vw, 500px);
+    top: 60%;
+    right: -15%;
+    animation-delay: -8s;
+    animation-duration: 30s;
+  }
+
+  .floating-orb-3 {
+    width: min(25vw, 400px);
+    height: min(25vw, 400px);
+    top: 30%;
+    left: 70%;
+    animation-delay: -15s;
+    animation-duration: 35s;
+  }
+
+  .geometric-grid {
+    position: absolute;
+    inset: 0;
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.03) 1px, transparent 1px);
+    background-size: 100px 100px;
+    animation: grid-shift 40s linear infinite;
+    will-change: transform;
+  }
+
+  .particle-field {
+    position: absolute;
+    inset: 0;
+  }
+
+  .particle {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: hsl(var(--primary) / 0.3);
+    border-radius: 50%;
+    animation: particle-float 20s ease-in-out infinite;
+    will-change: transform, opacity;
+  }
+
+  /* Keyframe Animations */
+  @keyframes gradient-flow {
+    0%, 100% {
+      background-position: 0% 50%;
+    }
+    50% {
+      background-position: 100% 50%;
+    }
+  }
+
+  @keyframes float-orb {
+    0%, 100% {
+      transform: translate(0, 0) scale(1);
+    }
+    25% {
+      transform: translate(10px, -20px) scale(1.05);
+    }
+    50% {
+      transform: translate(-5px, -10px) scale(0.95);
+    }
+    75% {
+      transform: translate(-15px, 15px) scale(1.02);
+    }
+  }
+
+  @keyframes grid-shift {
+    0% {
+      transform: translate(0, 0);
+    }
+    100% {
+      transform: translate(100px, 100px);
+    }
+  }
+
+  @keyframes particle-float {
+    0%, 100% {
+      transform: translateY(0) translateX(0);
+      opacity: 0;
+    }
+    10% {
+      opacity: 1;
+    }
+    90% {
+      opacity: 1;
+    }
+    50% {
+      transform: translateY(-100px) translateX(20px);
+      opacity: 0.8;
+    }
+  }
+
+  /* Performance optimizations */
+  .floating-orb,
+  .geometric-grid,
+  .particle {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+  }
+
+  /* Media query for reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    .bg-gradient-animation,
+    .floating-orb,
+    .geometric-grid,
+    .particle {
+      animation: none;
+    }
+  }
+
   /* Mobile-friendly touch targets */
   @media (max-width: 768px) {
     button, a {

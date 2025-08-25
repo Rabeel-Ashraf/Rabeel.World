@@ -7,6 +7,7 @@ import Projects from '@/components/Projects';
 import Resume from '@/components/Resume';
 import Skills from '@/components/Skills';
 import Contact from '@/components/Contact';
+import BackgroundAnimation from '@/components/BackgroundAnimation';
 
 const Index = () => {
   const [showLanding, setShowLanding] = useState(true);
@@ -16,7 +17,8 @@ const Index = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-background relative">
+      <BackgroundAnimation />
       <Navbar />
       <Hero />
       <About />
