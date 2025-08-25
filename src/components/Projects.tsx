@@ -1,44 +1,44 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, Brain, Wallet, Mic, Globe } from 'lucide-react';
+import { ExternalLink, Github, Network, MessageSquare, Car, Zap } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
     {
-      title: 'FinGenie',
-      description: 'AI-powered financial research tool that analyzes market trends and provides intelligent investment insights using advanced machine learning algorithms.',
-      icon: Brain,
+      title: 'Multi-Agent',
+      description: 'AutoGen-based multi-agent system with intelligent collaboration. Abstract network of AI agents working together through automated workflows and smart coordination.',
+      icon: Network,
       gradient: 'from-primary to-secondary',
       demo: '#',
       repo: '#',
-      tags: ['AI', 'Finance', 'ML', 'React']
+      tags: ['Multi-Agent', 'AutoGen', 'AI', 'Automation']
     },
     {
-      title: 'Wallet Fusion',
-      description: 'Comprehensive PKR local wallet system enabling seamless digital transactions with enhanced security and user-friendly interface for Pakistani market.',
-      icon: Wallet,
+      title: 'Chat_with_my_data',
+      description: 'RAG pipeline for document Q&A enabling intelligent conversations with your data. Transform documents into interactive knowledge base with AI-powered insights.',
+      icon: MessageSquare,
       gradient: 'from-secondary to-accent',
       demo: '#',
       repo: '#',
-      tags: ['FinTech', 'React', 'Node.js', 'Security']
+      tags: ['RAG', 'NLP', 'Q&A', 'Document AI']
     },
     {
-      title: 'Bella Voice Assistant',
-      description: 'Personal AI assistant with advanced natural language processing, voice recognition, and smart automation capabilities for daily tasks.',
-      icon: Mic,
+      title: 'Autonomous_Car',
+      description: 'Self-driving algorithm simulator with advanced pathfinding and smart navigation. Experience the future of mobility through AI-powered autonomous vehicle systems.',
+      icon: Car,
       gradient: 'from-accent to-primary',
       demo: '#',
       repo: '#',
-      tags: ['AI', 'NLP', 'Voice', 'Assistant']
+      tags: ['Autonomous', 'Simulation', 'AI', 'Mobility']
     },
     {
-      title: 'Rabeel.World',
-      description: 'My futuristic portfolio website showcasing cutting-edge 3D animations, cyberpunk aesthetics, and interactive user experiences.',
-      icon: Globe,
+      title: 'NLP_Techniques',
+      description: 'Modern NLP techniques notebook showcasing cutting-edge language processing methods. Explore advanced natural language understanding and generation capabilities.',
+      icon: Zap,
       gradient: 'from-primary via-secondary to-accent',
       demo: '#',
-      repo: 'https://github.com/Rabeel-Ashraf/Rabeel.world.portfolio',
-      tags: ['Portfolio', '3D', 'React', 'Three.js']
+      repo: '#',
+      tags: ['NLP', 'Language AI', 'Notebook', 'Techniques']
     }
   ];
 
