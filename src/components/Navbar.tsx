@@ -63,7 +63,7 @@ const Navbar = () => {
               size="sm"
               className="font-orbitron bg-gradient-to-r from-primary to-secondary hover:glow-primary"
               onClick={() => {
-                const url = 'https://wa.me/+971501234567?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you';
+                const url = 'https://wa.me/+971501359046?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you';
                 const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
                 if (newWindow) newWindow.opener = null;
               }}
@@ -107,7 +107,7 @@ const Navbar = () => {
                 size="sm"
                 className="font-orbitron bg-gradient-to-r from-primary to-secondary hover:glow-primary w-full"
                 onClick={() => {
-                  const url = 'https://wa.me/+971501234567?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you';
+                  const url = 'https://wa.me/+971501359046?text=Hi%20Rabeel,%20I%20would%20like%20to%20hire%20you';
                   const newWindow = window.open(url, '_blank', 'noopener,noreferrer');
                   if (newWindow) newWindow.opener = null;
                   setIsMobileMenuOpen(false);

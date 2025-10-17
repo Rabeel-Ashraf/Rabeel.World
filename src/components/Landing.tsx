@@ -112,9 +112,9 @@ const Landing = ({ onEnter }: LandingProps) => {
               size="lg"
               className={`
                 font-orbitron font-bold text-sm sm:text-lg px-8 sm:px-12 py-4 sm:py-6 rounded-full
-                bg-gradient-to-r from-primary via-secondary to-accent
-                hover:glow-primary transition-all duration-500
-                ${isEntering ? 'animate-pulse' : 'pulse-glow'}
+                bg-background border-2 border-foreground/20 text-foreground
+                hover:bg-foreground/5 hover:border-foreground/40 transition-all duration-300
+                ${isEntering ? 'opacity-50' : ''}
               `}
             >
               {isEntering ? 'ENTERING UNIVERSE...' : 'ENTER MY UNIVERSE'}
