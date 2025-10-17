@@ -5,15 +5,15 @@ import rabeelProfile from '@/assets/rabeel-profile.jpg';
 
 const Hero = () => {
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
       {/* Animated Background Grid */}
       <div className="absolute inset-0 code-rain opacity-30"></div>
       
       {/* Particle Background Effect */}
       <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-secondary/5"></div>
       
-      <div className="container mx-auto px-6 z-10">
-        <div className="text-center space-y-8">
+      <div className="container mx-auto px-4 md:px-6 z-10 max-w-6xl">
+        <div className="text-center space-y-6 md:space-y-8">
           {/* Profile Image with Glow */}
           <motion.div 
             className="relative mx-auto w-36 h-36 sm:w-48 sm:h-48 rounded-full overflow-hidden glow-primary"

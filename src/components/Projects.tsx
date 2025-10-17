@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, Network, MessageSquare, Car, Zap } from 'lucide-react';
+import { ExternalLink, Github, Network, MessageSquare, Car, Zap, Brain } from 'lucide-react';
 
 const Projects = () => {
   const projects = [
@@ -39,6 +39,15 @@ const Projects = () => {
       demo: '#',
       repo: '#',
       tags: ['NLP', 'Language AI', 'Notebook', 'Techniques']
+    },
+    {
+      title: 'LLMs',
+      description: 'Large Language Models integration and fine-tuning platform. Harness the power of state-of-the-art AI models for intelligent automation and advanced conversational experiences.',
+      icon: Brain,
+      gradient: 'from-secondary via-accent to-primary',
+      demo: '#',
+      repo: '#',
+      tags: ['LLMs', 'GPT', 'AI Models', 'Fine-tuning']
     }
   ];
 
@@ -60,7 +69,7 @@ const Projects = () => {
           </p>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-2 gap-8">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 md:gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={index}
