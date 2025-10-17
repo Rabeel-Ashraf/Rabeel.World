@@ -1,16 +1,17 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { ExternalLink, Github, Network, MessageSquare, Car, Zap, Brain } from 'lucide-react';
+import { ExternalLink, Network, MessageSquare, Car, Zap, Brain } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Projects = () => {
+  const navigate = useNavigate();
   const projects = [
     {
       title: 'Multi-Agent',
       description: 'AutoGen-based multi-agent system with intelligent collaboration. Abstract network of AI agents working together through automated workflows and smart coordination.',
       icon: Network,
       gradient: 'from-primary to-secondary',
-      demo: '#',
-      repo: '#',
+      link: '/projects/multi-agent',
       tags: ['Multi-Agent', 'AutoGen', 'AI', 'Automation']
     },
     {
@@ -18,8 +19,7 @@ const Projects = () => {
       description: 'RAG pipeline for document Q&A enabling intelligent conversations with your data. Transform documents into interactive knowledge base with AI-powered insights.',
       icon: MessageSquare,
       gradient: 'from-secondary to-accent',
-      demo: '#',
-      repo: '#',
+      link: '/projects/chat-with-data',
       tags: ['RAG', 'NLP', 'Q&A', 'Document AI']
     },
     {
@@ -27,8 +27,7 @@ const Projects = () => {
       description: 'Self-driving algorithm simulator with advanced pathfinding and smart navigation. Experience the future of mobility through AI-powered autonomous vehicle systems.',
       icon: Car,
       gradient: 'from-accent to-primary',
-      demo: '#',
-      repo: '#',
+      link: '/projects/autonomous-car',
       tags: ['Autonomous', 'Simulation', 'AI', 'Mobility']
     },
     {
@@ -36,8 +35,7 @@ const Projects = () => {
       description: 'Modern NLP techniques notebook showcasing cutting-edge language processing methods. Explore advanced natural language understanding and generation capabilities.',
       icon: Zap,
       gradient: 'from-primary via-secondary to-accent',
-      demo: '#',
-      repo: '#',
+      link: '/projects/nlp-techniques',
       tags: ['NLP', 'Language AI', 'Notebook', 'Techniques']
     },
     {
@@ -45,8 +43,7 @@ const Projects = () => {
       description: 'Large Language Models integration and fine-tuning platform. Harness the power of state-of-the-art AI models for intelligent automation and advanced conversational experiences.',
       icon: Brain,
       gradient: 'from-secondary via-accent to-primary',
-      demo: '#',
-      repo: '#',
+      link: '/projects/llms',
       tags: ['LLMs', 'GPT', 'AI Models', 'Fine-tuning']
     }
   ];
@@ -114,26 +111,10 @@ const Projects = () => {
                     variant="outline"
                     size="sm"
                     className="flex-1 border-primary/50 hover:bg-primary/10 hover:glow-primary transition-all duration-300"
-                    onClick={() => {
-                      const newWindow = window.open(project.demo, '_blank', 'noopener,noreferrer');
-                      if (newWindow) newWindow.opener = null;
-                    }}
+                    onClick={() => navigate(project.link)}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
-                    Demo
-                  </Button>
-                  
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    className="flex-1 border-secondary/50 hover:bg-secondary/10 hover:glow-secondary transition-all duration-300"
-                    onClick={() => {
-                      const newWindow = window.open(project.repo, '_blank', 'noopener,noreferrer');
-                      if (newWindow) newWindow.opener = null;
-                    }}
-                  >
-                    <Github className="w-4 h-4 mr-2" />
-                    Code
+                    Read More
                   </Button>
                 </div>
 
@@ -155,13 +136,10 @@ const Projects = () => {
           <Button
             size="lg"
             className="font-orbitron font-bold bg-gradient-to-r from-primary to-secondary hover:glow-primary transition-all duration-300"
-            onClick={() => {
-              const newWindow = window.open('https://github.com/Rabeel-Ashraf', '_blank', 'noopener,noreferrer');
-              if (newWindow) newWindow.opener = null;
-            }}
+            onClick={() => navigate('/projects/multi-agent')}
           >
-            <Github className="mr-2" />
-            View All Projects
+            <ExternalLink className="mr-2" />
+            Explore Projects
           </Button>
         </motion.div>
       </div>
