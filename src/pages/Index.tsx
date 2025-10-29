@@ -19,11 +19,13 @@ const Index = () => {
     <div className="min-h-screen bg-background relative">
       <BackgroundAnimation />
       <Navbar />
-      <Hero />
-      <About />
-      <Projects />
-      <Skills />
-      <Contact />
+      <div className="space-y-32">
+        <Hero />
+        <About />
+        <Projects />
+        <Skills />
+        <Contact />
+      </div>
     </div>
   );
 };

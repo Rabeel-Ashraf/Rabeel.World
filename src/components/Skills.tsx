@@ -51,7 +51,7 @@ const Skills = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-orbitron font-bold text-neon mb-6">
+          <h2 className="text-4xl md:text-6xl font-orbitron font-bold text-foreground mb-6">
             Technical Skills
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -71,10 +71,10 @@ const Skills = () => {
             <button
               key={category}
               onClick={() => setActiveCategory(category)}
-              className={`px-6 py-3 rounded-full font-orbitron font-medium transition-all duration-300 ${
+              className={`px-6 py-3 rounded-full font-medium transition-all duration-300 ${
                 activeCategory === category
-                  ? 'bg-gradient-to-r from-primary to-secondary text-background glow-primary'
-                  : 'glass hover:glow-primary hover:text-primary'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'bg-secondary hover:bg-secondary/80 text-foreground'
               }`}
             >
               {category}
@@ -96,13 +96,13 @@ const Skills = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
-              className="holo-card p-6 hover:glow-primary transition-all duration-300 group"
+              className="clean-card p-6 group"
             >
               <div className="flex justify-between items-center mb-4">
-                <h3 className="text-lg font-semibold text-foreground group-hover:text-neon transition-colors duration-300">
+                <h3 className="text-lg font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                   {skill.name}
                 </h3>
-                <span className="text-sm font-orbitron font-bold text-primary">
+                <span className="text-sm font-medium text-primary">
                   {skill.level}%
                 </span>
               </div>
@@ -114,10 +114,8 @@ const Skills = () => {
                   whileInView={{ width: `${skill.level}%` }}
                   transition={{ duration: 1.5, delay: index * 0.1, ease: "easeOut" }}
                   viewport={{ once: true }}
-                  className="h-full bg-gradient-to-r from-primary to-secondary rounded-full relative"
-                >
-                  <div className="absolute inset-0 bg-gradient-to-r from-primary to-secondary animate-pulse opacity-50" />
-                </motion.div>
+                  className="h-full bg-primary rounded-full"
+                />
               </div>
             </motion.div>
           ))}
@@ -144,9 +142,9 @@ const Skills = () => {
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.6, delay: 0.8 + index * 0.1 }}
                 viewport={{ once: true }}
-                className="glass p-6 rounded-lg hover:glow-primary transition-all duration-300"
+                className="glass p-6 rounded-lg"
               >
-                <div className="text-3xl font-orbitron font-bold text-neon mb-2">
+                <div className="text-3xl font-orbitron font-bold text-primary mb-2">
                   {stat.number}
                 </div>
                 <div className="text-sm text-muted-foreground">

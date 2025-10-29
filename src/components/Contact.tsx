@@ -6,7 +6,7 @@ import { MessageCircle, Instagram, Mail, Send, MapPin, Phone, Shield } from 'luc
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { contactFormSchema, type ContactFormData } from '@/lib/validation';
-import { sanitizeInput, obfuscateEmail, openSecureLink, rateLimit } from '@/lib/security';
+import { sanitizeInput, openSecureLink, rateLimit } from '@/lib/security';
 import { z } from 'zod';
 
 const Contact = () => {
@@ -142,7 +142,7 @@ const Contact = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-orbitron font-bold text-neon mb-6">
+          <h2 className="text-4xl md:text-6xl font-orbitron font-bold text-foreground mb-6">
             Let's Connect
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -159,7 +159,7 @@ const Contact = () => {
             viewport={{ once: true }}
             className="space-y-6"
           >
-            <div className="holo-card p-8 hover:glow-primary transition-all duration-300">
+            <div className="clean-card p-8">
               <h3 className="text-2xl font-orbitron font-bold text-foreground mb-6">
                 Send a Message
               </h3>
@@ -171,7 +171,7 @@ const Contact = () => {
                      placeholder="Your Name"
                      value={formData.name}
                      onChange={handleInputChange}
-                     className={`bg-input border-border focus:border-primary focus:glow-primary transition-all duration-300 ${
+                     className={`bg-input border-border focus:border-primary transition-all duration-300 ${
                        errors.name ? 'border-destructive' : ''
                      }`}
                      required
@@ -189,7 +189,7 @@ const Contact = () => {
                      placeholder="your.email@example.com"
                      value={formData.email}
                      onChange={handleInputChange}
-                     className={`bg-input border-border focus:border-primary focus:glow-primary transition-all duration-300 ${
+                     className={`bg-input border-border focus:border-primary transition-all duration-300 ${
                        errors.email ? 'border-destructive' : ''
                      }`}
                      required
@@ -207,7 +207,7 @@ const Contact = () => {
                      value={formData.message}
                      onChange={handleInputChange}
                      rows={6}
-                     className={`bg-input border-border focus:border-primary focus:glow-primary transition-all duration-300 resize-none ${
+                     className={`bg-input border-border focus:border-primary transition-all duration-300 resize-none ${
                        errors.message ? 'border-destructive' : ''
                      }`}
                      required
@@ -233,9 +233,9 @@ const Contact = () => {
                    type="submit"
                    size="lg"
                    disabled={isSubmitting}
-                   className="w-full font-orbitron font-bold bg-gradient-to-r from-primary to-secondary hover:glow-primary transition-all duration-300 group disabled:opacity-50"
+                   className="w-full font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300 disabled:opacity-50"
                  >
-                   <Send className={`mr-2 ${isSubmitting ? 'animate-spin' : 'group-hover:animate-pulse'}`} />
+                   <Send className={`mr-2 ${isSubmitting ? 'animate-spin' : ''}`} />
                    {isSubmitting ? 'Sending...' : 'Send Message'}
                  </Button>
                  
@@ -269,15 +269,15 @@ const Contact = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.6, delay: 0.6 + index * 0.1 }}
                   viewport={{ once: true }}
-                  className="w-full holo-card p-6 flex items-center space-x-4 hover:glow-primary transition-all duration-300 group"
+                  className="w-full clean-card p-6 flex items-center space-x-4 group"
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
-                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${method.gradient} p-3 group-hover:pulse-glow transition-all duration-300`}>
+                  <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${method.gradient} p-3 transition-all duration-300`}>
                     <method.icon className="w-full h-full text-white" />
                   </div>
                   <div className="flex-1 text-left">
-                    <h4 className="font-semibold text-foreground group-hover:text-neon transition-colors duration-300">
+                    <h4 className="font-semibold text-foreground group-hover:text-primary transition-colors duration-300">
                       {method.title}
                     </h4>
                     <p className="text-sm text-muted-foreground">
@@ -294,7 +294,7 @@ const Contact = () => {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.8 }}
               viewport={{ once: true }}
-              className="holo-card p-6 space-y-4"
+              className="clean-card p-6 space-y-4"
             >
               <h3 className="text-xl font-orbitron font-bold text-foreground mb-4">
                 Contact Information
@@ -326,7 +326,7 @@ const Contact = () => {
               viewport={{ once: true }}
               className="glass p-6 rounded-lg text-center"
             >
-              <div className="w-3 h-3 bg-accent rounded-full animate-pulse mx-auto mb-3"></div>
+              <div className="w-3 h-3 bg-primary rounded-full animate-pulse mx-auto mb-3"></div>
               <h4 className="font-orbitron font-bold text-foreground mb-2">
                 Available for Projects
               </h4>

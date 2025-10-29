@@ -58,7 +58,7 @@ const Projects = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-orbitron font-bold text-neon mb-6">
+          <h2 className="text-4xl md:text-6xl font-orbitron font-bold text-foreground mb-6">
             Featured Projects
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-3xl mx-auto">
@@ -76,15 +76,15 @@ const Projects = () => {
               viewport={{ once: true }}
               className="group relative"
             >
-              <div className="holo-card p-8 h-full flex flex-col hover:glow-primary transition-all duration-500 group-hover:scale-105">
+              <div className="clean-card p-8 h-full flex flex-col group-hover:scale-105">
                 {/* Project Icon */}
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${project.gradient} p-4 mb-6 group-hover:pulse-glow transition-all duration-300`}>
-                  <project.icon className="w-full h-full text-background" />
+                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${project.gradient} p-4 mb-6 transition-all duration-300`}>
+                  <project.icon className="w-full h-full text-white" />
                 </div>
 
                 {/* Project Content */}
                 <div className="flex-1">
-                  <h3 className="text-2xl font-orbitron font-bold text-foreground mb-4 group-hover:text-neon transition-colors duration-300">
+                  <h3 className="text-2xl font-orbitron font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
                   
@@ -110,7 +110,7 @@ const Projects = () => {
                   <Button
                     variant="outline"
                     size="sm"
-                    className="flex-1 border-primary/50 hover:bg-primary/10 hover:glow-primary transition-all duration-300"
+                    className="flex-1 hover:bg-secondary transition-all duration-300"
                     onClick={() => navigate(project.link)}
                   >
                     <ExternalLink className="w-4 h-4 mr-2" />
@@ -135,7 +135,7 @@ const Projects = () => {
         >
           <Button
             size="lg"
-            className="font-orbitron font-bold bg-gradient-to-r from-primary to-secondary hover:glow-primary transition-all duration-300"
+            className="font-medium bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-300"
             onClick={() => navigate('/projects/multi-agent')}
           >
             <ExternalLink className="mr-2" />

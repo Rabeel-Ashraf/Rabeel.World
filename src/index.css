@@ -8,47 +8,38 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Cyberpunk Dark Theme - Futuristic Portfolio */
-    --background: 220 27% 4%;
-    --foreground: 190 100% 95%;
+    /* Minimal Professional Theme */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
 
-    --card: 220 25% 6%;
-    --card-foreground: 190 100% 95%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 9%;
 
-    --popover: 220 25% 6%;
-    --popover-foreground: 190 100% 95%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
 
-    --primary: 190 100% 50%;
-    --primary-foreground: 220 27% 4%;
-    --primary-glow: 190 100% 70%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 260 100% 70%;
-    --secondary-foreground: 220 27% 4%;
-    --secondary-glow: 260 100% 85%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 0 0% 9%;
 
-    --accent: 120 100% 50%;
-    --accent-foreground: 220 27% 4%;
-    --accent-glow: 120 100% 70%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 9%;
 
-    --muted: 220 15% 15%;
-    --muted-foreground: 190 50% 70%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 100%;
 
-    --border: 220 20% 20%;
-    --input: 220 25% 10%;
-    --ring: 190 100% 50%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
 
-    /* Cyberpunk Gradients */
-    --gradient-cyber: linear-gradient(135deg, hsl(var(--primary)), hsl(var(--secondary)));
-    --gradient-neon: linear-gradient(45deg, hsl(var(--primary)), hsl(var(--accent)));
-    --gradient-dark: linear-gradient(180deg, hsl(var(--background)), hsl(220 30% 2%));
-    
-    /* Glows and Effects */
-    --glow-primary: 0 0 30px hsl(var(--primary) / 0.5);
-    --glow-secondary: 0 0 30px hsl(var(--secondary) / 0.5);
-    --glow-accent: 0 0 20px hsl(var(--accent) / 0.4);
+    /* Subtle Gradients */
+    --gradient-subtle: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(var(--accent) / 0.05));
+    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(210 40% 98%));
     
     /* Animations */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -74,33 +65,33 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
+    --background: 222 47% 11%;
     --foreground: 210 40% 98%;
 
-    --card: 222.2 84% 4.9%;
+    --card: 222 47% 14%;
     --card-foreground: 210 40% 98%;
 
-    --popover: 222.2 84% 4.9%;
+    --popover: 222 47% 11%;
     --popover-foreground: 210 40% 98%;
 
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 217.2 32.6% 17.5%;
+    --secondary: 217 33% 17%;
     --secondary-foreground: 210 40% 98%;
 
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
 
-    --accent: 217.2 32.6% 17.5%;
+    --accent: 217 91% 60%;
     --accent-foreground: 210 40% 98%;
 
-    --destructive: 0 62.8% 30.6%;
+    --destructive: 0 63% 31%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
     --sidebar-background: 240 5.9% 10%;
     --sidebar-foreground: 240 4.8% 95.9%;
     --sidebar-primary: 224.3 76.3% 48%;
@@ -119,273 +110,53 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground overflow-x-hidden;
-    background: var(--gradient-dark);
+    background: var(--gradient-background);
     font-family: 'Inter', sans-serif;
-  }
-
-  /* Mobile optimizations */
-  @media (max-width: 768px) {
-    * {
-      -webkit-tap-highlight-color: transparent;
-    }
-    
-    .holo-card, .glass {
-      backdrop-filter: blur(8px) saturate(180%);
-    }
-    
-    .glow-primary, .glow-secondary, .glow-accent {
-      box-shadow: none;
-    }
-    
-    .pulse-glow {
-      animation: none;
-    }
   }
 }
 
 @layer components {
-  /* Cyberpunk Glow Effects */
-  .glow-primary {
-    box-shadow: var(--glow-primary);
+  /* Clean Card Style */
+  .clean-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
   }
   
-  .glow-secondary {
-    box-shadow: var(--glow-secondary);
+  .clean-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: hsl(var(--primary));
   }
   
-  .glow-accent {
-    box-shadow: var(--glow-accent);
-  }
-  
-  /* Neon Text Effect */
-  .text-neon {
-    text-shadow: 0 0 10px hsl(var(--primary)), 0 0 20px hsl(var(--primary)), 0 0 30px hsl(var(--primary));
-  }
-  
-  /* Glassmorphism */
+  /* Minimal glass effect */
   .glass {
-    backdrop-filter: blur(16px) saturate(180%);
-    background-color: rgba(255, 255, 255, 0.05);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid hsl(var(--border));
   }
   
-  /* Holographic Card */
-  .holo-card {
-    background: linear-gradient(145deg, 
-      hsl(var(--card)) 0%, 
-      hsl(var(--card)) 50%, 
-      hsl(var(--primary) / 0.1) 100%
-    );
-    border: 1px solid hsl(var(--primary) / 0.3);
-    box-shadow: 0 8px 32px hsl(var(--primary) / 0.1);
+  /* Responsive text scaling */
+  .text-responsive {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
   }
-  
-  /* Floating Animation */
+
+  /* Subtle background pattern */
+  .bg-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 50px 50px;
+  }
+
+  /* Float animation */
   .float {
     animation: float 6s ease-in-out infinite;
   }
   
   @keyframes float {
     0%, 100% { transform: translateY(0px); }
-    50% { transform: translateY(-20px); }
-  }
-  
-  /* Pulse Glow */
-  .pulse-glow {
-    animation: pulseGlow 2s ease-in-out infinite alternate;
-  }
-  
-  @keyframes pulseGlow {
-    from { box-shadow: 0 0 20px hsl(var(--primary) / 0.4); }
-    to { box-shadow: 0 0 40px hsl(var(--primary) / 0.8); }
-  }
-  
-  /* Code Rain Effect */
-  .code-rain {
-    position: relative;
-    overflow: hidden;
-  }
-  
-  .code-rain::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-image: 
-      linear-gradient(rgba(0, 255, 136, 0.1) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(0, 255, 136, 0.1) 1px, transparent 1px);
-    background-size: 20px 20px;
-    animation: codeRain 20s linear infinite;
-    pointer-events: none;
-  }
-  
-  @keyframes codeRain {
-    0% { transform: translateY(-100%); }
-    100% { transform: translateY(100%); }
-  }
-
-  /* Responsive text scaling */
-  .text-responsive {
-    font-size: clamp(1rem, 2.5vw, 1.25rem);
-  }
-
-  /* Background Animation Styles */
-  .bg-gradient-animation {
-    background: linear-gradient(
-      45deg,
-      hsl(var(--background)) 0%,
-      hsl(var(--primary) / 0.03) 25%,
-      hsl(var(--secondary) / 0.02) 50%,
-      hsl(var(--accent) / 0.03) 75%,
-      hsl(var(--background)) 100%
-    );
-    background-size: 400% 400%;
-    animation: gradient-flow 20s ease-in-out infinite;
-  }
-
-  .floating-orb {
-    position: absolute;
-    border-radius: 50%;
-    background: radial-gradient(
-      circle at center,
-      hsl(var(--primary) / 0.1) 0%,
-      hsl(var(--primary) / 0.05) 50%,
-      transparent 70%
-    );
-    filter: blur(1px);
-    animation: float-orb 25s ease-in-out infinite;
-    will-change: transform;
-  }
-
-  .floating-orb-1 {
-    width: min(40vw, 600px);
-    height: min(40vw, 600px);
-    top: -20%;
-    left: -10%;
-    animation-delay: 0s;
-    animation-duration: 25s;
-  }
-
-  .floating-orb-2 {
-    width: min(35vw, 500px);
-    height: min(35vw, 500px);
-    top: 60%;
-    right: -15%;
-    animation-delay: -8s;
-    animation-duration: 30s;
-  }
-
-  .floating-orb-3 {
-    width: min(25vw, 400px);
-    height: min(25vw, 400px);
-    top: 30%;
-    left: 70%;
-    animation-delay: -15s;
-    animation-duration: 35s;
-  }
-
-  .geometric-grid {
-    position: absolute;
-    inset: 0;
-    background-image: 
-      linear-gradient(hsl(var(--border) / 0.03) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(var(--border) / 0.03) 1px, transparent 1px);
-    background-size: 100px 100px;
-    animation: grid-shift 40s linear infinite;
-    will-change: transform;
-  }
-
-  .particle-field {
-    position: absolute;
-    inset: 0;
-  }
-
-  .particle {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: hsl(var(--primary) / 0.3);
-    border-radius: 50%;
-    animation: particle-float 20s ease-in-out infinite;
-    will-change: transform, opacity;
-  }
-
-  /* Keyframe Animations */
-  @keyframes gradient-flow {
-    0%, 100% {
-      background-position: 0% 50%;
-    }
-    50% {
-      background-position: 100% 50%;
-    }
-  }
-
-  @keyframes float-orb {
-    0%, 100% {
-      transform: translate(0, 0) scale(1);
-    }
-    25% {
-      transform: translate(10px, -20px) scale(1.05);
-    }
-    50% {
-      transform: translate(-5px, -10px) scale(0.95);
-    }
-    75% {
-      transform: translate(-15px, 15px) scale(1.02);
-    }
-  }
-
-  @keyframes grid-shift {
-    0% {
-      transform: translate(0, 0);
-    }
-    100% {
-      transform: translate(100px, 100px);
-    }
-  }
-
-  @keyframes particle-float {
-    0%, 100% {
-      transform: translateY(0) translateX(0);
-      opacity: 0;
-    }
-    10% {
-      opacity: 1;
-    }
-    90% {
-      opacity: 1;
-    }
-    50% {
-      transform: translateY(-100px) translateX(20px);
-      opacity: 0.8;
-    }
-  }
-
-  /* Performance optimizations */
-  .floating-orb,
-  .geometric-grid,
-  .particle {
-    transform: translateZ(0);
-    backface-visibility: hidden;
-  }
-
-  /* Media query for reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    .bg-gradient-animation,
-    .floating-orb,
-    .geometric-grid,
-    .particle {
-      animation: none;
-    }
-  }
-
-  /* Mobile-friendly touch targets */
-  @media (max-width: 768px) {
-    button, a {
-      min-height: 44px;
-      min-width: 44px;
-    }
+    50% { transform: translateY(-10px); }
   }
 }

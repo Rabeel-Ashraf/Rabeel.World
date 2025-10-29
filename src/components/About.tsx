@@ -39,7 +39,7 @@ const About = () => {
           viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-orbitron font-bold text-neon mb-6">
+          <h2 className="text-4xl md:text-6xl font-orbitron font-bold text-foreground mb-6">
             About Me
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
@@ -70,7 +70,7 @@ const About = () => {
                 viewport={{ once: true }}
                 className="flex items-start space-x-4 group"
               >
-                <div className="flex-shrink-0 w-12 h-12 rounded-full holo-card flex items-center justify-center group-hover:glow-primary transition-all duration-300">
+                <div className="flex-shrink-0 w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-all duration-300">
                   <item.icon className="w-6 h-6 text-primary" />
                 </div>
                 <div className="flex-1">
@@ -119,7 +119,7 @@ const About = () => {
                   whileInView={{ opacity: 1, scale: 1 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="holo-card p-4 text-center hover:glow-primary transition-all duration-300 cursor-pointer"
+                  className="clean-card p-4 text-center cursor-pointer"
                   whileHover={{ scale: 1.05 }}
                 >
                   <span className="text-sm font-medium text-foreground">
@@ -144,7 +144,7 @@ const About = () => {
                   viewport={{ once: true }}
                   className="text-center glass p-4 rounded-lg"
                 >
-                  <div className="text-2xl font-orbitron font-bold text-neon">
+                  <div className="text-2xl font-orbitron font-bold text-primary mb-2">
                     {stat.number}
                   </div>
                   <div className="text-sm text-muted-foreground">
