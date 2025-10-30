@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 import { Volume2, VolumeX } from 'lucide-react';
@@ -11,6 +11,33 @@ interface LandingProps {
 const Landing = ({ onEnter }: LandingProps) => {
   const [musicEnabled, setMusicEnabled] = useState(false);
   const [isEntering, setIsEntering] = useState(false);
+  const audioRef = useRef<HTMLAudioElement | null>(null);
+
+  useEffect(() => {
+    // Initialize audio element
+    audioRef.current = new Audio('/background-music.mp3');
+    audioRef.current.loop = true;
+    audioRef.current.volume = 0.3;
+
+    return () => {
+      if (audioRef.current) {
+        audioRef.current.pause();
+        audioRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (audioRef.current) {
+      if (musicEnabled) {
+        audioRef.current.play().catch(err => {
+          console.log('Audio playback failed:', err);
+        });
+      } else {
+        audioRef.current.pause();
+      }
+    }
+  }, [musicEnabled]);
 
   const handleEnterUniverse = () => {
     setIsEntering(true);
@@ -21,7 +48,6 @@ const Landing = ({ onEnter }: LandingProps) => {
 
   const toggleMusic = () => {
     setMusicEnabled(!musicEnabled);
-    // TODO: Add background music logic here
   };
 
   return (
