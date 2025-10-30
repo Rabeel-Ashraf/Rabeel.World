@@ -6,25 +6,25 @@ const About = () => {
     {
       year: '2024',
       title: 'Founder of Orionix Labs',
-      description: 'Building futuristic AI platforms',
+      description: 'Developing AI-powered applications and platforms',
       icon: Rocket,
     },
     {
       year: '2023',
       title: 'AI Specialist',
-      description: 'Developing cutting-edge AI solutions',
+      description: 'Building machine learning and NLP solutions',
       icon: Cpu,
     },
     {
       year: '2022',
       title: 'Safety Officer',
-      description: 'Ensuring workplace safety standards',
+      description: 'Managing safety protocols and compliance',
       icon: Shield,
     },
     {
       year: '2021',
       title: 'Mechanical Engineer',
-      description: 'Engineering innovative solutions',
+      description: 'Designing mechanical systems and solutions',
       icon: Code,
     },
   ];
@@ -43,9 +43,9 @@ const About = () => {
             About Me
           </h2>
           <p className="text-lg md:text-xl text-muted-foreground max-w-4xl mx-auto leading-relaxed">
-            I'm Rabeel Ashraf — AI Specialist, Mechanical Engineer, Safety Officer & Founder of Orionix Labs. 
-            I build AI-powered apps that fuse futuristic design with real-world utility, helping startups and 
-            people thrive in the UAE and beyond.
+            AI Specialist, Mechanical Engineer, and Safety Officer with expertise in building intelligent systems 
+            and engineering solutions. Founder of Orionix Labs, focused on developing practical AI applications 
+            for businesses in the UAE.
           </p>
         </motion.div>
 

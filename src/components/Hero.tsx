@@ -118,28 +118,11 @@ const Hero = () => {
                 transition={{ delay: 1.4 + index * 0.1 }}
               >
                 <Icon className="w-6 h-6 group-hover:text-primary transition-colors" />
-              </motion.a>
+          </motion.a>
             ))}
           </motion.div>
         </div>
       </div>
-      
-      {/* Scroll Indicator */}
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2, duration: 1 }}
-        className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-      >
-        <div className="flex flex-col items-center space-y-2">
-          <span className="text-sm text-muted-foreground font-inter">Scroll to explore</span>
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="w-1 h-8 bg-primary rounded-full"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 };
