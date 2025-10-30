@@ -1,6 +1,6 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
-import { Github, Linkedin, Mail, Instagram, MessageCircle, ExternalLink } from 'lucide-react';
+import { Linkedin, Mail, Instagram, MessageCircle, ExternalLink } from 'lucide-react';
 import rabeelProfile from '@/assets/rabeel-profile.jpg';
 import { openSecureLink } from '@/lib/security';
 
@@ -101,7 +101,6 @@ const Hero = () => {
             className="flex justify-center space-x-6"
           >
             {[
-              { icon: Github, href: 'https://github.com/Rabeel-Ashraf', label: 'GitHub' },
               { icon: Linkedin, href: 'https://linkedin.com/in/rabeel-ashraf-721105204', label: 'LinkedIn' },
               { icon: Mail, href: 'mailto:mrperfect6ft@gmail.com', label: 'Email' },
               { icon: Instagram, href: 'https://instagram.com/xavernox?igsh=bDZ2bjF3aWM3b3k1', label: 'Instagram' }

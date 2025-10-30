@@ -30,7 +30,7 @@ const Skills = () => {
       { name: 'TensorFlow', level: 75 }
     ],
     Tools: [
-      { name: 'GitHub', level: 95 },
+      { name: 'Git', level: 95 },
       { name: 'Docker', level: 80 },
       { name: 'AWS', level: 75 },
       { name: 'Figma', level: 85 },

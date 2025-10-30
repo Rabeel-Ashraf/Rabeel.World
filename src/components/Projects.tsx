@@ -84,20 +84,20 @@ const Projects = () => {
 
                 {/* Project Content */}
                 <div className="flex-1">
-                  <h3 className="text-2xl font-orbitron font-bold text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+                  <h3 className="text-xl md:text-2xl font-orbitron font-bold text-foreground mb-3 group-hover:text-primary transition-colors duration-300">
                     {project.title}
                   </h3>
                   
-                  <p className="text-muted-foreground leading-relaxed mb-6">
+                  <p className="text-sm md:text-base text-muted-foreground leading-relaxed mb-4 line-clamp-3 md:line-clamp-none">
                     {project.description}
                   </p>
 
                   {/* Tags */}
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2 mb-4">
                     {project.tags.map((tag, tagIndex) => (
                       <span
                         key={tagIndex}
-                        className="text-xs font-medium bg-primary/10 text-primary px-3 py-1 rounded-full border border-primary/20"
+                        className="text-xs font-medium bg-primary/10 text-primary px-2 md:px-3 py-1 rounded-full border border-primary/20"
                       >
                         {tag}
                       </span>
