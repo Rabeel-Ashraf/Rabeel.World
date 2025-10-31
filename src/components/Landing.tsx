@@ -85,7 +85,7 @@ const Landing = ({ onEnter }: LandingProps) => {
             className="space-y-6 mb-12"
           >
             <h1 className="text-4xl sm:text-6xl md:text-8xl font-orbitron font-black text-neon">
-              RABEEL.WORLD
+              Rabeel Ashraf
             </h1>
             <p className="text-lg sm:text-xl md:text-2xl font-inter text-muted-foreground max-w-2xl px-4">
               Welcome to the digital universe of AI innovation, engineering excellence, 

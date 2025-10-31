@@ -42,7 +42,7 @@ const Navbar = () => {
             <div className="w-10 h-10 rounded-full bg-gradient-to-r from-primary to-secondary flex items-center justify-center">
               <span className="font-orbitron font-bold text-sm">RA</span>
             </div>
-            <span className="font-orbitron font-bold text-xl">RABEEL.WORLD</span>
+            <span className="font-orbitron font-bold text-xl">Rabeel Ashraf</span>
           </motion.div>
 
           {/* Desktop Navigation */}
