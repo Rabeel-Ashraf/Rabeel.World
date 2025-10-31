@@ -103,7 +103,7 @@ const Hero = () => {
             {[
               { icon: Linkedin, href: 'https://linkedin.com/in/rabeel-ashraf-721105204', label: 'LinkedIn' },
               { icon: Mail, href: 'mailto:mrperfect6ft@gmail.com', label: 'Email' },
-              { icon: Instagram, href: 'https://instagram.com/xavernox?igsh=bDZ2bjF3aWM3b3k1', label: 'Instagram' }
+              { icon: Instagram, href: 'https://www.instagram.com/jupyter.me?igsh=bDZ2bjF3aWM3b3k1', label: 'Instagram' }
             ].map(({ icon: Icon, href, label }, index) => (
               <motion.a
                 key={label}
