@@ -3,11 +3,17 @@ import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { Textarea } from '@/components/ui/textarea';
 import { MessageCircle, Instagram, Mail, Send, MapPin, Phone, Shield } from 'lucide-react';
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { contactFormSchema, type ContactFormData } from '@/lib/validation';
 import { sanitizeInput, openSecureLink, rateLimit } from '@/lib/security';
 import { z } from 'zod';
+
+// Obfuscated email to prevent scraping
+const getEmail = () => {
+  const parts = ['mrperfect6ft', 'gmail', 'com'];
+  return `${parts[0]}@${parts[1]}.${parts[2]}`;
+};
 
 const Contact = () => {
   const [formData, setFormData] = useState({
@@ -127,7 +133,7 @@ const Contact = () => {
       icon: Mail,
       title: 'Email',
       description: 'Professional inquiries',
-      action: () => window.location.href = 'mailto:mrperfect6ft@gmail.com',
+      action: () => window.location.href = `mailto:${getEmail()}`,
       gradient: 'from-primary to-secondary'
     }
   ];
@@ -313,7 +319,7 @@ const Contact = () => {
                 
                  <div className="flex items-center space-x-3">
                    <Mail className="w-5 h-5 text-primary" />
-                   <span className="text-muted-foreground">mrperfect6ft@gmail.com</span>
+                   <span className="text-muted-foreground">{getEmail()}</span>
                  </div>
               </div>
             </motion.div>
