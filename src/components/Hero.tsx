@@ -4,6 +4,12 @@ import { Linkedin, Mail, Instagram, MessageCircle, ExternalLink } from 'lucide-r
 import rabeelProfile from '@/assets/rabeel-profile.jpg';
 import { openSecureLink } from '@/lib/security';
 
+// Obfuscated email to prevent scraping
+const getEmail = () => {
+  const parts = ['mrperfect6ft', 'gmail', 'com'];
+  return `${parts[0]}@${parts[1]}.${parts[2]}`;
+};
+
 const Hero = () => {
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden px-4">
@@ -102,7 +108,7 @@ const Hero = () => {
           >
             {[
               { icon: Linkedin, href: 'https://linkedin.com/in/rabeel-ashraf-721105204', label: 'LinkedIn' },
-              { icon: Mail, href: 'mailto:mrperfect6ft@gmail.com', label: 'Email' },
+              { icon: Mail, href: `mailto:${getEmail()}`, label: 'Email' },
               { icon: Instagram, href: 'https://www.instagram.com/jupyter.me?igsh=bDZ2bjF3aWM3b3k1', label: 'Instagram' }
             ].map(({ icon: Icon, href, label }, index) => (
               <motion.a

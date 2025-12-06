@@ -2,15 +2,6 @@
 User-agent: *
 Allow: /
 
-# Block specific paths for security
-Disallow: /admin/
-Disallow: /api/
-Disallow: /.env
-Disallow: /config/
-Disallow: /logs/
-Disallow: /tmp/
-Disallow: /backup/
-
 # Allow search engines to index the main content
 Allow: /
 Allow: /#about
