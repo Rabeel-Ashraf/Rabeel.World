@@ -1,16 +1,187 @@
-# Security-enhanced robots.txt
+# ===========================================
+# AI CRAWLER BLOCKING - Updated 2025
+# ===========================================
+
+# OpenAI crawlers
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: OAI-SearchBot
+Disallow: /
+
+# Anthropic (Claude)
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+# Google AI (Gemini training)
+User-agent: Google-Extended
+Disallow: /
+
+# Meta/Facebook AI
+User-agent: FacebookBot
+Disallow: /
+
+User-agent: Meta-ExternalAgent
+Disallow: /
+
+User-agent: Meta-ExternalFetcher
+Disallow: /
+
+# Apple AI
+User-agent: Applebot-Extended
+Disallow: /
+
+# Perplexity
+User-agent: PerplexityBot
+Disallow: /
+
+# Common Crawl (used by many AI companies)
+User-agent: CCBot
+Disallow: /
+
+# ByteDance/TikTok
+User-agent: Bytespider
+Disallow: /
+
+User-agent: ByteDance
+Disallow: /
+
+# Amazon
+User-agent: Amazonbot
+Disallow: /
+
+# Diffbot
+User-agent: Diffbot
+Disallow: /
+
+# Cohere
+User-agent: cohere-ai
+Disallow: /
+
+# Sider AI
+User-agent: Sidetrade indexer bot
+Disallow: /
+
+# You.com
+User-agent: YouBot
+Disallow: /
+
+# Webz.io
+User-agent: webzio-extended
+Disallow: /
+
+# AI2
+User-agent: AI2Bot
+Disallow: /
+
+User-agent: Ai2Bot-Dolma
+Disallow: /
+
+# Omgili
+User-agent: omgili
+Disallow: /
+
+User-agent: omgilibot
+Disallow: /
+
+# img2dataset
+User-agent: img2dataset
+Disallow: /
+
+User-agent: ImagesiftBot
+Disallow: /
+
+# Scrapy and generic scrapers
+User-agent: Scrapy
+Disallow: /
+
+User-agent: PetalBot
+Disallow: /
+
+User-agent: SemrushBot
+Disallow: /
+
+User-agent: AhrefsBot
+Disallow: /
+
+User-agent: MJ12bot
+Disallow: /
+
+User-agent: DotBot
+Disallow: /
+
+User-agent: DataForSeoBot
+Disallow: /
+
+User-agent: BLEXBot
+Disallow: /
+
+User-agent: SeznamBot
+Disallow: /
+
+User-agent: Yeti
+Disallow: /
+
+# Grok/xAI
+User-agent: Grok
+Disallow: /
+
+User-agent: xAI-Grok
+Disallow: /
+
+# Hugging Face
+User-agent: iaskspider
+Disallow: /
+
+# Neeva (now part of Snowflake)
+User-agent: NeevaBot
+Disallow: /
+
+# Brave AI
+User-agent: BraveBot
+Disallow: /
+
+# ===========================================
+# ALLOW LEGITIMATE SEARCH ENGINES (SEO)
+# ===========================================
+
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-Video
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: Slurp
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Yandex
+Allow: /
+
+# ===========================================
+# DEFAULT: Block unknown bots
+# ===========================================
+
 User-agent: *
 Allow: /
+Crawl-delay: 10
 
-# Allow search engines to index the main content
-Allow: /
-Allow: /#about
-Allow: /#projects
-Allow: /#skills
-Allow: /#contact
-
-# Specify sitemap location
+# Sitemap
 Sitemap: https://rabeel.world/sitemap.xml
-
-# Crawl delay to prevent aggressive crawling
-Crawl-delay: 1
