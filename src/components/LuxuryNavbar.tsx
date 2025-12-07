@@ -16,10 +16,10 @@ const LuxuryNavbar = () => {
   }, []);
 
   const navLinks = [
-    { label: 'About', href: '#about' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'about', href: '#about' },
+    { label: 'projects', href: '#projects' },
+    { label: 'skills', href: '#skills' },
+    { label: 'contact', href: '#contact' },
   ];
 
   const scrollToSection = (href: string) => {
@@ -47,10 +47,10 @@ const LuxuryNavbar = () => {
             {/* Logo */}
             <motion.a
               href="#"
-              className="text-lg font-bold tracking-tight text-foreground hover:text-primary transition-colors magnetic"
+              className="text-lg font-bold tracking-tight text-foreground hover:text-foreground/70 transition-colors magnetic lowercase"
               whileHover={{ scale: 1.02 }}
             >
-              RA
+              ra
             </motion.a>
 
             {/* Desktop Nav */}
@@ -59,7 +59,7 @@ const LuxuryNavbar = () => {
                 <button
                   key={link.label}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-sm text-muted-foreground hover:text-foreground transition-colors link-hover magnetic"
+                  className="text-sm text-muted-foreground hover:text-foreground transition-colors link-hover magnetic lowercase tracking-wide"
                 >
                   {link.label}
                 </button>
@@ -69,11 +69,11 @@ const LuxuryNavbar = () => {
             {/* CTA */}
             <motion.button
               onClick={() => scrollToSection('#contact')}
-              className="hidden md:block px-5 py-2 text-sm border border-border rounded-full hover:border-primary hover:text-primary transition-all duration-300 magnetic"
+              className="hidden md:block px-5 py-2 text-sm border border-border rounded-full hover:border-foreground/30 hover:text-foreground transition-all duration-300 magnetic lowercase tracking-wide"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Get in Touch
+              get in touch
             </motion.button>
 
             {/* Mobile Menu Button */}
@@ -110,7 +110,7 @@ const LuxuryNavbar = () => {
                   exit={{ opacity: 0, y: 20 }}
                   transition={{ delay: index * 0.1 }}
                   onClick={() => scrollToSection(link.href)}
-                  className="text-3xl font-bold text-foreground hover:text-primary transition-colors"
+                  className="text-3xl font-bold text-foreground hover:text-foreground/70 transition-colors lowercase"
                 >
                   {link.label}
                 </motion.button>

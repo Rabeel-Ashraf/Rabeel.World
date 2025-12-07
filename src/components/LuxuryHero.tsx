@@ -49,24 +49,24 @@ const LuxuryHero = () => {
     document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  const name = "RABEEL";
-  const surname = "ASHRAF";
+  const name = "rabeel";
+  const surname = "ashraf";
 
   return (
     <section 
       ref={containerRef}
       className="relative min-h-screen flex items-center justify-center overflow-hidden bg-background"
     >
-      {/* Subtle gradient background */}
+      {/* Subtle gradient background - monochrome */}
       <div 
-        className="absolute inset-0 opacity-30"
+        className="absolute inset-0 opacity-20"
         style={{
-          background: `radial-gradient(ellipse at ${50 + mousePosition.x * 10}% ${50 + mousePosition.y * 10}%, hsl(var(--primary) / 0.15), transparent 60%)`,
+          background: `radial-gradient(ellipse at ${50 + mousePosition.x * 10}% ${50 + mousePosition.y * 10}%, hsl(0 0% 20% / 0.3), transparent 60%)`,
         }}
       />
 
       {/* Grid pattern overlay */}
-      <div className="absolute inset-0 opacity-[0.02]" style={{
+      <div className="absolute inset-0 opacity-[0.015]" style={{
         backgroundImage: `
           linear-gradient(hsl(var(--foreground)) 1px, transparent 1px),
           linear-gradient(90deg, hsl(var(--foreground)) 1px, transparent 1px)
@@ -83,8 +83,8 @@ const LuxuryHero = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="mb-8"
         >
-          <span className="text-xs md:text-sm tracking-[0.3em] text-muted-foreground uppercase">
-            AI Specialist · Engineer · Founder
+          <span className="text-eyebrow">
+            ai specialist · engineer · founder
           </span>
         </motion.div>
 
@@ -141,9 +141,9 @@ const LuxuryHero = () => {
           transition={{ duration: 0.8, delay: 1.5 }}
           className="text-body text-muted-foreground max-w-xl mx-auto mb-12"
         >
-          Crafting intelligent systems that push the boundaries of what's possible.
+          crafting intelligent systems that push the boundaries of what's possible.
           <br />
-          <span className="text-primary">Dubai, UAE</span>
+          <span className="text-foreground">dubai, uae</span>
         </motion.p>
 
         {/* CTA */}
@@ -160,7 +160,7 @@ const LuxuryHero = () => {
             whileTap={{ scale: 0.98 }}
             data-magnetic
           >
-            <span>Explore My Work</span>
+            <span>explore my work</span>
           </motion.button>
         </motion.div>
       </div>
@@ -174,20 +174,20 @@ const LuxuryHero = () => {
       >
         <motion.button
           onClick={scrollToContent}
-          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors magnetic"
+          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-foreground transition-colors magnetic"
           animate={{ y: [0, 10, 0] }}
           transition={{ repeat: Infinity, duration: 2, ease: 'easeInOut' }}
         >
-          <span className="text-xs tracking-[0.2em] uppercase">Scroll</span>
+          <span className="text-eyebrow">scroll</span>
           <ArrowDown className="w-4 h-4" />
         </motion.button>
       </motion.div>
 
       {/* Corner accents */}
-      <div className="absolute top-8 left-8 w-16 h-16 border-l border-t border-border/50" />
-      <div className="absolute top-8 right-8 w-16 h-16 border-r border-t border-border/50" />
-      <div className="absolute bottom-8 left-8 w-16 h-16 border-l border-b border-border/50" />
-      <div className="absolute bottom-8 right-8 w-16 h-16 border-r border-b border-border/50" />
+      <div className="absolute top-8 left-8 w-16 h-16 border-l border-t border-border/30" />
+      <div className="absolute top-8 right-8 w-16 h-16 border-r border-t border-border/30" />
+      <div className="absolute bottom-8 left-8 w-16 h-16 border-l border-b border-border/30" />
+      <div className="absolute bottom-8 right-8 w-16 h-16 border-r border-b border-border/30" />
     </section>
   );
 };

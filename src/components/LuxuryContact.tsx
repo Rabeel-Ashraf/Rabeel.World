@@ -12,25 +12,25 @@ const LuxuryContact = () => {
   const socialLinks = [
     { 
       icon: MessageCircle, 
-      label: 'WhatsApp', 
+      label: 'whatsapp', 
       href: 'https://wa.me/971501359046?text=Hi%20Rabeel,%20I%20would%20like%20to%20discuss%20a%20project%20with%20you',
       external: true,
     },
     { 
       icon: Linkedin, 
-      label: 'LinkedIn', 
+      label: 'linkedin', 
       href: 'https://linkedin.com/in/rabeel-ashraf-721105204',
       external: true,
     },
     { 
       icon: Mail, 
-      label: 'Email', 
+      label: 'email', 
       href: `mailto:${getEmail()}`,
       external: false,
     },
     { 
       icon: Instagram, 
-      label: 'Instagram', 
+      label: 'instagram', 
       href: 'https://www.instagram.com/jupyter.me?igsh=bDZ2bjF3aWM3b3k1',
       external: true,
     },
@@ -45,9 +45,9 @@ const LuxuryContact = () => {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-xs tracking-[0.3em] text-primary uppercase mb-6 block"
+            className="text-eyebrow mb-6 block"
           >
-            Contact
+            contact
           </motion.span>
 
           {/* Main heading */}
@@ -58,9 +58,9 @@ const LuxuryContact = () => {
             transition={{ delay: 0.1 }}
             className="text-headline text-foreground mb-8"
           >
-            Let's Build
+            let's build
             <br />
-            <span className="text-shimmer">Something Great</span>
+            <span className="text-shimmer">something great</span>
           </motion.h2>
 
           {/* Description */}
@@ -71,8 +71,8 @@ const LuxuryContact = () => {
             transition={{ delay: 0.2 }}
             className="text-body text-muted-foreground mb-16 max-w-2xl"
           >
-            Have a project in mind? I'm always open to discussing new opportunities, 
-            creative ideas, or partnerships. Let's connect and explore what we can 
+            have a project in mind? i'm always open to discussing new opportunities, 
+            creative ideas, or partnerships. let's connect and explore what we can 
             create together.
           </motion.p>
 
@@ -86,12 +86,12 @@ const LuxuryContact = () => {
           >
             <motion.button
               onClick={() => openSecureLink('https://wa.me/971501359046?text=Hi%20Rabeel,%20I%20would%20like%20to%20discuss%20a%20project%20with%20you')}
-              className="group inline-flex items-center gap-4 text-2xl md:text-3xl font-bold text-foreground hover:text-primary transition-colors duration-300 magnetic"
+              className="group inline-flex items-center gap-4 text-2xl md:text-3xl font-bold text-foreground hover:text-foreground/70 transition-colors duration-300 magnetic lowercase"
               whileHover={{ x: 10 }}
             >
-              <span>Start a Conversation</span>
+              <span>start a conversation</span>
               <motion.div
-                className="w-12 h-12 rounded-full border border-border flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all duration-300"
+                className="w-12 h-12 rounded-full border border-border flex items-center justify-center group-hover:border-foreground/30 group-hover:bg-foreground transition-all duration-300"
                 whileHover={{ rotate: 45 }}
               >
                 <ArrowUpRight className="w-5 h-5 group-hover:text-primary-foreground" />
@@ -124,8 +124,8 @@ const LuxuryContact = () => {
                 className="luxury-card p-6 flex flex-col items-center gap-3 group magnetic"
                 whileHover={{ y: -4 }}
               >
-                <link.icon className="w-6 h-6 text-muted-foreground group-hover:text-primary transition-colors duration-300" />
-                <span className="text-sm text-foreground">{link.label}</span>
+                <link.icon className="w-6 h-6 text-muted-foreground group-hover:text-foreground transition-colors duration-300" />
+                <span className="text-sm text-foreground lowercase">{link.label}</span>
               </motion.a>
             ))}
           </motion.div>
@@ -141,11 +141,11 @@ const LuxuryContact = () => {
       >
         <div className="container mx-auto px-6 md:px-12">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-muted-foreground">
-              © {new Date().getFullYear()} Rabeel Ashraf. All rights reserved.
+            <p className="text-sm text-muted-foreground lowercase">
+              © {new Date().getFullYear()} rabeel ashraf. all rights reserved.
             </p>
-            <p className="text-sm text-muted-foreground">
-              Dubai, UAE · Available Worldwide
+            <p className="text-sm text-muted-foreground lowercase">
+              dubai, uae · available worldwide
             </p>
           </div>
         </div>

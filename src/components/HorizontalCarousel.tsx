@@ -30,7 +30,6 @@ const HorizontalCarousel = ({
   const x = useMotionValue(0);
   const springX = useSpring(x, { damping: 30, stiffness: 200, mass: 0.5 });
 
-  // Calculate drag constraints
   useEffect(() => {
     if (!containerRef.current || !trackRef.current) return;
     
@@ -41,7 +40,6 @@ const HorizontalCarousel = ({
     setConstraints({ left: -maxDrag, right: 0 });
   }, [items.length, itemWidth, gap]);
 
-  // Update active index based on scroll position
   useEffect(() => {
     const unsubscribe = x.on('change', (latest) => {
       const index = Math.round(Math.abs(latest) / (itemWidth + gap));
@@ -54,10 +52,8 @@ const HorizontalCarousel = ({
     const velocity = info.velocity.x;
     const currentX = x.get();
     
-    // Snap to nearest item with momentum
     let targetIndex = Math.round(Math.abs(currentX) / (itemWidth + gap));
     
-    // Add momentum-based adjustment
     if (Math.abs(velocity) > 500) {
       targetIndex += velocity > 0 ? -1 : 1;
     }
@@ -85,7 +81,6 @@ const HorizontalCarousel = ({
 
   return (
     <section className="py-24 md:py-32 overflow-hidden">
-      {/* Header */}
       {(title || subtitle) && (
         <div className="container mx-auto px-6 md:px-12 mb-12">
           <div className="flex flex-col md:flex-row md:items-end md:justify-between gap-4">
@@ -95,7 +90,7 @@ const HorizontalCarousel = ({
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  className="text-xs tracking-[0.3em] text-primary uppercase mb-4 block"
+                  className="text-eyebrow mb-4 block"
                 >
                   {subtitle}
                 </motion.span>
@@ -113,7 +108,6 @@ const HorizontalCarousel = ({
               )}
             </div>
 
-            {/* Pagination dots */}
             <div className="flex gap-2">
               {items.map((_, index) => (
                 <button
@@ -122,7 +116,7 @@ const HorizontalCarousel = ({
                   className={`
                     w-2 h-2 rounded-full transition-all duration-300 magnetic
                     ${activeIndex === index 
-                      ? 'bg-primary w-8' 
+                      ? 'bg-foreground w-8' 
                       : 'bg-muted-foreground/30 hover:bg-muted-foreground/50'
                     }
                   `}
@@ -133,7 +127,6 @@ const HorizontalCarousel = ({
         </div>
       )}
 
-      {/* Carousel */}
       <div 
         ref={containerRef}
         className="relative cursor-grab active:cursor-grabbing"
@@ -151,7 +144,6 @@ const HorizontalCarousel = ({
           onDragEnd={handleDragEnd}
         >
           {items.map((item, index) => {
-            // Parallax effect based on position
             const itemX = useTransform(
               springX,
               [-(index + 1) * (itemWidth + gap), -index * (itemWidth + gap), -(index - 1) * (itemWidth + gap)],
@@ -189,16 +181,14 @@ const HorizontalCarousel = ({
           })}
         </motion.div>
 
-        {/* Fade edges */}
         <div className="absolute inset-y-0 left-0 w-12 bg-gradient-to-r from-background to-transparent pointer-events-none" />
         <div className="absolute inset-y-0 right-0 w-24 bg-gradient-to-l from-background to-transparent pointer-events-none" />
       </div>
 
-      {/* Progress bar */}
       <div className="container mx-auto px-6 md:px-12 mt-8">
         <div className="h-px bg-border relative overflow-hidden">
           <motion.div
-            className="absolute inset-y-0 left-0 bg-primary"
+            className="absolute inset-y-0 left-0 bg-foreground"
             style={{
               width: `${((activeIndex + 1) / items.length) * 100}%`,
             }}
