@@ -9,52 +9,52 @@ const LuxuryProjects = () => {
   const projects = [
     {
       id: 1,
-      title: 'Multi-Agent',
-      subtitle: 'AI Orchestration',
-      description: 'AutoGen-based multi-agent system with intelligent collaboration and automated workflows.',
+      title: 'multi-agent',
+      subtitle: 'ai orchestration',
+      description: 'autogen-based multi-agent system with intelligent collaboration and automated workflows.',
       icon: Network,
       link: '/projects/multi-agent',
-      tags: ['AutoGen', 'AI', 'Automation'],
+      tags: ['autogen', 'ai', 'automation'],
       year: '2024',
     },
     {
       id: 2,
-      title: 'Chat with Data',
-      subtitle: 'RAG Pipeline',
-      description: 'Intelligent document Q&A system transforming knowledge into interactive conversations.',
+      title: 'chat with data',
+      subtitle: 'rag pipeline',
+      description: 'intelligent document q&a system transforming knowledge into interactive conversations.',
       icon: MessageSquare,
       link: '/projects/chat-with-data',
-      tags: ['RAG', 'NLP', 'LLM'],
+      tags: ['rag', 'nlp', 'llm'],
       year: '2024',
     },
     {
       id: 3,
-      title: 'Autonomous Car',
-      subtitle: 'Self-Driving AI',
-      description: 'Advanced pathfinding algorithms and smart navigation for autonomous vehicle systems.',
+      title: 'autonomous car',
+      subtitle: 'self-driving ai',
+      description: 'advanced pathfinding algorithms and smart navigation for autonomous vehicle systems.',
       icon: Car,
       link: '/projects/autonomous-car',
-      tags: ['Computer Vision', 'Robotics'],
+      tags: ['computer vision', 'robotics'],
       year: '2023',
     },
     {
       id: 4,
-      title: 'NLP Techniques',
-      subtitle: 'Language Processing',
-      description: 'Cutting-edge natural language understanding and generation capabilities.',
+      title: 'nlp techniques',
+      subtitle: 'language processing',
+      description: 'cutting-edge natural language understanding and generation capabilities.',
       icon: Zap,
       link: '/projects/nlp-techniques',
-      tags: ['NLP', 'Transformers'],
+      tags: ['nlp', 'transformers'],
       year: '2023',
     },
     {
       id: 5,
-      title: 'LLM Platform',
-      subtitle: 'Model Integration',
-      description: 'Large Language Models integration and fine-tuning for intelligent automation.',
+      title: 'llm platform',
+      subtitle: 'model integration',
+      description: 'large language models integration and fine-tuning for intelligent automation.',
       icon: Brain,
       link: '/projects/llms',
-      tags: ['GPT', 'Fine-tuning'],
+      tags: ['gpt', 'fine-tuning'],
       year: '2024',
     },
   ];
@@ -72,18 +72,18 @@ const LuxuryProjects = () => {
         <div>
           {/* Header */}
           <div className="flex items-start justify-between mb-8">
-            <div className="w-14 h-14 rounded-lg bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors duration-500">
-              <project.icon className="w-6 h-6 text-primary" />
+            <div className="w-14 h-14 rounded-lg bg-secondary flex items-center justify-center group-hover:bg-accent transition-colors duration-500">
+              <project.icon className="w-6 h-6 text-foreground" />
             </div>
-            <span className="text-xs text-muted-foreground tracking-wider">{project.year}</span>
+            <span className="text-eyebrow">{project.year}</span>
           </div>
 
           {/* Content */}
           <div className="mb-6">
-            <p className="text-xs text-primary tracking-[0.2em] uppercase mb-2">
+            <p className="text-eyebrow mb-2">
               {project.subtitle}
             </p>
-            <h3 className="text-title text-foreground mb-4 group-hover:text-primary transition-colors duration-300">
+            <h3 className="text-title text-foreground mb-4 group-hover:text-foreground/80 transition-colors duration-300">
               {project.title}
             </h3>
             <p className="text-body text-muted-foreground leading-relaxed">
@@ -96,7 +96,7 @@ const LuxuryProjects = () => {
             {project.tags.map((tag, i) => (
               <span
                 key={i}
-                className="text-xs px-3 py-1 rounded-full bg-secondary text-secondary-foreground"
+                className="text-xs px-3 py-1 rounded-full bg-secondary text-muted-foreground lowercase"
               >
                 {tag}
               </span>
@@ -106,11 +106,11 @@ const LuxuryProjects = () => {
 
         {/* Bottom CTA */}
         <div className="flex items-center justify-between pt-6 border-t border-border">
-          <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors">
-            View Project
+          <span className="text-sm text-muted-foreground group-hover:text-foreground transition-colors lowercase">
+            view project
           </span>
           <motion.div
-            className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:border-primary group-hover:bg-primary transition-all duration-300"
+            className="w-10 h-10 rounded-full border border-border flex items-center justify-center group-hover:border-foreground/30 group-hover:bg-foreground transition-all duration-300"
             whileHover={{ rotate: 45 }}
           >
             <ArrowUpRight className="w-4 h-4 group-hover:text-primary-foreground transition-colors" />
@@ -126,8 +126,8 @@ const LuxuryProjects = () => {
         items={projectCards}
         itemWidth={380}
         gap={24}
-        title="Selected Work"
-        subtitle="Featured Projects"
+        title="selected work"
+        subtitle="featured projects"
       />
     </section>
   );

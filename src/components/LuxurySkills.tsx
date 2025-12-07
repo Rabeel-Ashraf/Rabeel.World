@@ -8,42 +8,42 @@ const LuxurySkills = () => {
   const skillCategories = [
     {
       id: 1,
-      name: 'Frontend',
+      name: 'frontend',
       skills: [
-        { name: 'React', level: 95 },
-        { name: 'Next.js', level: 90 },
-        { name: 'TypeScript', level: 85 },
-        { name: 'Tailwind CSS', level: 95 },
+        { name: 'react', level: 95 },
+        { name: 'next.js', level: 90 },
+        { name: 'typescript', level: 85 },
+        { name: 'tailwind css', level: 95 },
       ],
     },
     {
       id: 2,
-      name: 'Backend',
+      name: 'backend',
       skills: [
-        { name: 'Python', level: 95 },
-        { name: 'Node.js', level: 85 },
-        { name: 'FastAPI', level: 90 },
-        { name: 'PostgreSQL', level: 80 },
+        { name: 'python', level: 95 },
+        { name: 'node.js', level: 85 },
+        { name: 'fastapi', level: 90 },
+        { name: 'postgresql', level: 80 },
       ],
     },
     {
       id: 3,
-      name: 'AI & ML',
+      name: 'ai & ml',
       skills: [
-        { name: 'OpenAI API', level: 95 },
-        { name: 'LLMs', level: 90 },
-        { name: 'NLP', level: 88 },
-        { name: 'TensorFlow', level: 75 },
+        { name: 'openai api', level: 95 },
+        { name: 'llms', level: 90 },
+        { name: 'nlp', level: 88 },
+        { name: 'tensorflow', level: 75 },
       ],
     },
     {
       id: 4,
-      name: 'Tools',
+      name: 'tools',
       skills: [
-        { name: 'Git', level: 95 },
-        { name: 'Docker', level: 80 },
-        { name: 'AWS', level: 75 },
-        { name: 'Figma', level: 85 },
+        { name: 'git', level: 95 },
+        { name: 'docker', level: 80 },
+        { name: 'aws', level: 75 },
+        { name: 'figma', level: 85 },
       ],
     },
   ];
@@ -52,7 +52,7 @@ const LuxurySkills = () => {
     id: category.id,
     content: (
       <div className="luxury-card p-8 h-full">
-        <h3 className="text-xs tracking-[0.3em] text-primary uppercase mb-8">
+        <h3 className="text-eyebrow mb-8">
           {category.name}
         </h3>
 
@@ -69,7 +69,7 @@ const LuxurySkills = () => {
               onMouseLeave={() => setHoveredSkill(null)}
             >
               <div className="flex justify-between items-center mb-2">
-                <span className="text-foreground font-medium group-hover:text-primary transition-colors duration-300">
+                <span className="text-foreground font-medium group-hover:text-foreground/80 transition-colors duration-300 lowercase">
                   {skill.name}
                 </span>
                 <motion.span
@@ -84,9 +84,9 @@ const LuxurySkills = () => {
               </div>
 
               {/* Progress bar */}
-              <div className="h-1 bg-secondary rounded-full overflow-hidden">
+              <div className="h-px bg-secondary rounded-full overflow-hidden">
                 <motion.div
-                  className="h-full bg-primary rounded-full"
+                  className="h-full bg-foreground rounded-full"
                   initial={{ width: 0 }}
                   whileInView={{ width: `${skill.level}%` }}
                   viewport={{ once: true }}
@@ -102,8 +102,8 @@ const LuxurySkills = () => {
 
   // Tech marquee
   const technologies = [
-    'React', 'Python', 'TypeScript', 'OpenAI', 'TensorFlow', 'Node.js', 
-    'FastAPI', 'PostgreSQL', 'Docker', 'AWS', 'Tailwind', 'Next.js',
+    'react', 'python', 'typescript', 'openai', 'tensorflow', 'node.js', 
+    'fastapi', 'postgresql', 'docker', 'aws', 'tailwind', 'next.js',
   ];
 
   return (
@@ -113,8 +113,8 @@ const LuxurySkills = () => {
         items={skillCards}
         itemWidth={320}
         gap={24}
-        title="Technical Skills"
-        subtitle="Expertise"
+        title="technical skills"
+        subtitle="expertise"
       />
 
       {/* Marquee */}
@@ -131,7 +131,7 @@ const LuxurySkills = () => {
           {[...technologies, ...technologies].map((tech, index) => (
             <span
               key={index}
-              className="text-2xl md:text-3xl font-bold text-muted-foreground/20 hover:text-primary transition-colors duration-300"
+              className="text-2xl md:text-3xl font-bold text-muted-foreground/15 hover:text-foreground/50 transition-colors duration-300 lowercase"
             >
               {tech}
             </span>
