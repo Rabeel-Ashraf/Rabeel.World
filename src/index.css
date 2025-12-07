@@ -2,207 +2,205 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Inter - Primary Font */
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;900&display=swap');
-
-/* JetBrains Mono - Codenames */
-@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500&display=swap');
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
 
 @layer base {
   :root {
-    /* Pure Black & White Only */
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    /* Minimal Professional Theme */
+    --background: 0 0% 100%;
+    --foreground: 0 0% 9%;
 
-    --card: 0 0% 0%;
-    --card-foreground: 0 0% 100%;
+    --card: 0 0% 98%;
+    --card-foreground: 0 0% 9%;
 
-    --popover: 0 0% 0%;
-    --popover-foreground: 0 0% 100%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 0 0% 9%;
 
-    --primary: 0 0% 100%;
-    --primary-foreground: 0 0% 0%;
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 0 0% 5%;
-    --secondary-foreground: 0 0% 100%;
+    --secondary: 210 40% 96%;
+    --secondary-foreground: 0 0% 9%;
 
-    /* Single accent: #00FF99 */
-    --accent: 153 100% 50%;
-    --accent-foreground: 0 0% 0%;
+    --accent: 217 91% 60%;
+    --accent-foreground: 0 0% 9%;
 
-    --muted: 0 0% 10%;
-    --muted-foreground: 0 0% 50%;
+    --muted: 210 40% 96%;
+    --muted-foreground: 215 16% 47%;
 
-    --destructive: 0 0% 50%;
+    --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 0 0% 15%;
-    --input: 0 0% 15%;
-    --ring: 0 0% 100%;
+    --border: 214 32% 91%;
+    --input: 214 32% 91%;
+    --ring: 217 91% 60%;
 
-    --radius: 0px;
+    /* Subtle Gradients */
+    --gradient-subtle: linear-gradient(135deg, hsl(var(--primary) / 0.05), hsl(var(--accent) / 0.05));
+    --gradient-background: linear-gradient(180deg, hsl(var(--background)), hsl(210 40% 98%));
+    
+    /* Animations */
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-bounce: all 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    --transition-butter: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    --transition-silk: all 0.8s cubic-bezier(0.23, 1, 0.32, 1);
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 
   .dark {
-    --background: 0 0% 0%;
-    --foreground: 0 0% 100%;
+    --background: 222 47% 11%;
+    --foreground: 210 40% 98%;
+
+    --card: 222 47% 14%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222 47% 11%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 217 91% 60%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 217 33% 17%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217 33% 17%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 217 91% 60%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 63% 31%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217 33% 17%;
+    --input: 217 33% 17%;
+    --ring: 217 91% 60%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
   }
 }
 
 @layer base {
   * {
     @apply border-border;
-    cursor: none !important;
   }
 
   html {
     scroll-behavior: smooth;
-    background: #000000;
+    scroll-padding-top: 80px;
   }
 
   body {
-    @apply bg-background text-foreground;
-    background: #000000 !important;
-    font-family: 'Inter', -apple-system, sans-serif;
-    font-weight: 300;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    @apply bg-background text-foreground overflow-x-hidden;
+    background: var(--gradient-background);
+    font-family: 'Inter', sans-serif;
   }
 
-  ::-webkit-scrollbar {
-    display: none;
-  }
-
-  body {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-  }
-
-  ::selection {
-    background: #00FF99;
-    color: #000000;
+  /* Smooth scrolling with custom easing */
+  @media (prefers-reduced-motion: no-preference) {
+    * {
+      scroll-behavior: smooth;
+    }
   }
 }
 
 @layer components {
-  /* Custom cursor - 20px white dot */
-  .custom-cursor {
-    width: 20px;
-    height: 20px;
-    background: #FFFFFF;
-    border-radius: 50%;
-    position: fixed;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    mix-blend-mode: difference;
+  /* Performance optimizations */
+  * {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Hero name - 160-180px */
-  .text-display-hero {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(60px, 14vw, 180px);
-    font-weight: 900;
-    letter-spacing: -0.05em;
-    line-height: 0.9;
-    text-transform: uppercase;
-    color: #FFFFFF;
+  /* Hardware acceleration for smooth animations */
+  .accelerated {
+    transform: translateZ(0);
+    will-change: transform, opacity;
   }
 
-  /* Section titles - 90px */
-  .text-section-title {
-    font-family: 'Inter', sans-serif;
-    font-size: clamp(40px, 8vw, 90px);
-    font-weight: 900;
-    letter-spacing: -0.03em;
-    line-height: 1;
-    text-transform: uppercase;
-    color: #FFFFFF;
+  /* Clean Card Style */
+  .clean-card {
+    background: hsl(var(--card));
+    border: 1px solid hsl(var(--border));
+    border-radius: var(--radius);
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    transition: var(--transition-butter);
+    transform: translateZ(0);
+  }
+  
+  .clean-card:hover {
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-color: hsl(var(--primary));
+    transform: translateY(-2px) translateZ(0);
+  }
+  
+  /* Minimal glass effect */
+  .glass {
+    background: hsl(var(--card) / 0.8);
+    backdrop-filter: blur(8px);
+    border: 1px solid hsl(var(--border));
+    transition: var(--transition-butter);
+  }
+  
+  /* Responsive text scaling */
+  .text-responsive {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
   }
 
-  /* Subtitle - 32px */
-  .text-subtitle {
-    font-family: 'Inter', sans-serif;
-    font-size: 32px;
-    font-weight: 300;
-    color: #FFFFFF;
+  /* Subtle background pattern */
+  .bg-pattern {
+    background-image: 
+      linear-gradient(hsl(var(--border) / 0.3) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--border) / 0.3) 1px, transparent 1px);
+    background-size: 50px 50px;
   }
 
-  /* Focus areas - 26px */
-  .text-focus {
-    font-family: 'Inter', sans-serif;
-    font-size: 26px;
-    font-weight: 300;
-    color: #FFFFFF;
+  /* Butter smooth float animation */
+  .float {
+    animation: float 6s cubic-bezier(0.25, 0.46, 0.45, 0.94) infinite;
+  }
+  
+  @keyframes float {
+    0%, 100% { 
+      transform: translateY(0px) translateZ(0);
+    }
+    50% { 
+      transform: translateY(-10px) translateZ(0);
+    }
   }
 
-  /* Body - 21px */
-  .text-body-investor {
-    font-family: 'Inter', sans-serif;
-    font-size: 21px;
-    font-weight: 300;
-    line-height: 1.7;
-    color: #FFFFFF;
+  /* Smooth link transitions */
+  a {
+    transition: var(--transition-butter);
   }
 
-  /* Contact email - 26px medium */
-  .text-contact {
-    font-family: 'Inter', sans-serif;
-    font-size: 26px;
-    font-weight: 500;
-    color: #FFFFFF;
-    letter-spacing: 0.02em;
-  }
-
-  /* Mono - codenames */
-  .text-mono {
-    font-family: 'JetBrains Mono', monospace;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-  }
-
-  /* Minimal link */
-  .link-minimal {
-    color: #FFFFFF;
-    text-decoration: none;
-    transition: opacity 0.15s ease;
-  }
-
-  .link-minimal:hover {
-    opacity: 0.5;
-  }
-
-  /* Nav link */
-  .nav-link {
-    font-family: 'Inter', sans-serif;
-    font-size: 13px;
-    font-weight: 400;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #FFFFFF;
-    opacity: 0.4;
-    transition: opacity 0.15s ease;
-    text-decoration: none;
-  }
-
-  .nav-link:hover,
-  .nav-link.active {
-    opacity: 1;
-  }
-
-  /* Redacted box */
-  .redacted-box {
-    background: #FFFFFF;
-    color: #000000;
-    padding: 6px 14px;
-    display: inline-block;
-  }
-
-  /* Position item */
-  .position-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    min-height: 100px;
+  /* Optimize button transitions */
+  button {
+    transition: var(--transition-butter);
+    transform: translateZ(0);
   }
 }
